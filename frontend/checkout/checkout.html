@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | Skip Fashion</title>
+
+    <meta
+        name="description"
+        content="Review your selected Skip Fashion products before placing your order."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span>Authentic African craftsmanship</span>
+            <span>•</span>
+            <span>Order securely through WhatsApp</span>
+            <span>•</span>
+            <span>Account required to place an order</span>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container header-inner">
+
+            <a href="../index.html" class="brand">
+                <span class="brand-symbol">S</span>
+                <span>
+                    <strong>SKIP FASHION</strong>
+                    <small>Fashion & Accessories</small>
+                </span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../pages/shop.html">Shop</a>
+                <a href="../pages/collections.html">Collections</a>
+                <a href="../pages/how-it-works.html">How It Works</a>
+                <a href="../pages/contact.html">Contact</a>
+                <a href="../cart/cart.html" class="active">Cart</a>
+            </nav>
+
+            <div class="header-actions">
+                <button type="button" class="search-button" id="searchButton" aria-label="Search">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M16 16L21 21"></path>
+                    </svg>
+                </button>
+
+                <a href="../auth/login.html" class="account-button" id="accountLink">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path>
+                    </svg>
+                    <span>Account</span>
+                </a>
+
+                <button type="button" class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <a href="../index.html">Home</a>
+            <a href="../pages/shop.html">Shop</a>
+            <a href="../pages/collections.html">Collections</a>
+            <a href="../pages/how-it-works.html">How It Works</a>
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../auth/login.html" id="mobileAccountLink">My Account</a>
+            <a href="../cart/cart.html" class="active">Cart</a>
+        </nav>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay" hidden>
+        <button class="search-close" id="searchClose" aria-label="Close search">×</button>
+
+        <div class="search-box">
+            <span>SEARCH SKIP FASHION</span>
+            <input type="text" id="searchInput" placeholder="Search attire, crafts, colours...">
+            <div></div>
+        </div>
+    </div>
+
+    <main>
+        <section class="checkout-breadcrumb">
+            <div class="container">
+                <a href="../index.html">Home</a>
+                <span>/</span>
+                <span>Checkout</span>
+            </div>
+        </section>
+
+        <section class="checkout-section">
+            <div class="container">
+                <div class="checkout-heading">
+                    <div>
+                        <span class="section-eyebrow">YOUR ORDER</span>
+                        <h1>Complete Your Order</h1>
+                        <p>Review your selected items and provide your delivery details before sending your order through WhatsApp.</p>
+                    </div>
+                </div>
+
+                <div id="checkout-loading" class="checkout-state">
+                    <div class="loading-spinner"></div>
+                    <h2>Loading your order...</h2>
+                    <p>Please wait while we prepare your checkout summary.</p>
+                </div>
+
+                <div id="checkout-login" class="checkout-state hidden">
+                    <div class="state-icon">🔐</div>
+                    <h2>Sign in required</h2>
+                    <p>Please sign in to continue with your order.</p>
+                    <a href="../auth/login.html?redirect=../checkout/checkout.html" class="primary-button">Sign In</a>
+                </div>
+
+                <div id="checkout-empty" class="checkout-state hidden">
+                    <div class="state-icon">🛒</div>
+                    <h2>Your cart is empty</h2>
+                    <p>Add at least one product before proceeding to checkout.</p>
+                    <a href="../pages/shop.html" class="primary-button">Continue Shopping</a>
+                </div>
+
+                <div id="checkout-content" class="hidden">
+                    <form id="checkout-form" class="checkout-layout" novalidate>
+                        <div class="checkout-main">
+                            <div class="checkout-card">
+                                <div class="card-heading">
+                                    <span class="step-number">01</span>
+                                    <div>
+                                        <h2>Customer Information</h2>
+                                        <p>Tell us who we should contact about this order.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="customerName">Full Name</label>
+                                        <input type="text" id="customerName" name="shipping_name" placeholder="Enter your full name" autocomplete="name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="customerPhone">Phone Number</label>
+                                        <input type="tel" id="customerPhone" name="shipping_phone" placeholder="e.g. 08012345678" autocomplete="tel" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-card">
+                                <div class="card-heading">
+                                    <span class="step-number">02</span>
+                                    <div>
+                                        <h2>Delivery Information</h2>
+                                        <p>Provide the location where you would like to receive your order.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="deliveryAddress">Delivery Address</label>
+                                    <textarea id="deliveryAddress" name="shipping_address" rows="4" placeholder="Enter your complete delivery address" autocomplete="street-address" required></textarea>
+                                </div>
+
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="deliveryCity">City</label>
+                                        <input type="text" id="deliveryCity" name="shipping_city" placeholder="e.g. Makurdi" autocomplete="address-level2" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="deliveryState">State</label>
+                                        <input type="text" id="deliveryState" name="shipping_state" placeholder="e.g. Benue" autocomplete="address-level1" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-card">
+                                <div class="card-heading">
+                                    <span class="step-number">03</span>
+                                    <div>
+                                        <h2>Order Note</h2>
+                                        <p>Add any additional information for the store.</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="orderNote">Additional Note <span class="optional">Optional</span></label>
+                                    <textarea id="orderNote" name="notes" rows="4" placeholder="Any colour preference, delivery instruction, or other request?"></textarea>
+                                </div>
+                            </div>
+
+                            <div id="checkout-error" class="checkout-error hidden" role="alert" aria-live="polite"></div>
+
+                            <div class="checkout-info">
+                                <div class="info-icon">✓</div>
+                                <div>
+                                    <strong>How ordering works</strong>
+                                    <p>Your order will be prepared as a WhatsApp message and sent directly to the store. The store will confirm product availability, delivery charges and payment details with you.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="checkout-sidebar">
+                            <div class="order-summary-card">
+                                <h2>Your Order</h2>
+
+                                <div id="checkout-items" class="checkout-items"></div>
+
+                                <div class="summary-divider"></div>
+
+                                <div class="summary-row">
+                                    <span>Items</span>
+                                    <span id="summaryQuantity">0</span>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Subtotal</span>
+                                    <strong id="checkout-subtotal">₦0.00</strong>
+                                </div>
+
+                                <div class="summary-row">
+                                    <span>Delivery</span>
+                                    <span class="delivery-pending">To be confirmed</span>
+                                </div>
+
+                                <div class="summary-divider"></div>
+
+                                <div class="summary-total">
+                                    <span>Order Total</span>
+                                    <strong id="checkout-total">₦0.00</strong>
+                                </div>
+
+                                <button type="submit" class="primary-button whatsapp-button" id="submit-order">
+                                    <span class="submit-text">Send Order via WhatsApp</span>
+                                    <span class="submit-spinner hidden">...</span>
+                                </button>
+
+                                <a href="../cart/cart.html" class="secondary-link">← Back to Cart</a>
+                            </div>
+                        </aside>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-main">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Skip Fashion</h2>
+                    <p>Authentic Nigerian attire and handmade crafts, thoughtfully selected to celebrate culture and craftsmanship.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../pages/shop.html">Shop</a>
+                    <a href="../pages/contact.html">Contact</a>
+                    <a href="../pages/how-it-works.html">How It Works</a>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Customer</h3>
+                    <a href="../auth/login.html">Sign In</a>
+                    <a href="../auth/signup.html">Create Account</a>
+                    <a href="../account/index.html">My Account</a>
+                    <a href="../cart/cart.html">My Cart</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2026 Skip Fashion. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/header.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/checkout.js"></script>
+</body>
+</html>

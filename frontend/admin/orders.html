@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | Skip Fashion</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/orders.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body class="admin-body">
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link active"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar" id="sidebarAvatar">A</div>
+                    <div class="admin-user-mini-info">
+                        <strong id="sidebarAdminName">Administrator</strong>
+                        <span id="sidebarAdminRole">Admin</span>
+                    </div>
+                </div>
+                <button type="button" class="admin-logout-btn" id="logoutButton">
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <div class="page-heading">
+                        <span class="page-eyebrow">Skip Fashion Admin</span>
+                        <h1>Orders</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <button type="button" class="topbar-icon-btn" id="refreshButton" title="Refresh orders" aria-label="Refresh orders">↻</button>
+                    <a href="../index.html" class="view-store-link" target="_blank" rel="noopener">View Store</a>
+                    <div class="topbar-user">
+                        <div class="admin-avatar" id="topbarAvatar">A</div>
+                        <div class="topbar-user-info">
+                            <strong id="topbarAdminName">Administrator</strong>
+                            <span id="topbarAdminEmail">Admin account</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="admin-content">
+                <div class="dashboard-welcome orders-page-header">
+                    <div>
+                        <span class="section-eyebrow">Sales Management</span>
+                        <h2>Manage customer orders</h2>
+                        <p>Review incoming orders, monitor order status and open individual order details.</p>
+                    </div>
+                </div>
+
+                <section class="dashboard-stats" aria-label="Order statistics">
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">Total Orders</span>
+                            <div class="stat-icon stat-icon-orders">▤</div>
+                        </div>
+                        <div class="stat-value" id="totalOrders">0</div>
+                        <div class="stat-footer"><span class="stat-description">All customer orders</span></div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">Pending</span>
+                            <div class="stat-icon stat-icon-pending">◷</div>
+                        </div>
+                        <div class="stat-value" id="pendingOrders">0</div>
+                        <div class="stat-footer"><span class="stat-description">Awaiting action</span></div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">Processing</span>
+                            <div class="stat-icon stat-icon-products">◌</div>
+                        </div>
+                        <div class="stat-value" id="processingOrders">0</div>
+                        <div class="stat-footer"><span class="stat-description">Confirmed or in progress</span></div>
+                    </article>
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">Completed</span>
+                            <div class="stat-icon stat-icon-customers">✓</div>
+                        </div>
+                        <div class="stat-value" id="completedOrders">0</div>
+                        <div class="stat-footer"><span class="stat-description">Delivered or completed</span></div>
+                    </article>
+                </section>
+
+                <section class="admin-panel orders-panel" aria-labelledby="ordersHeading">
+                    <div class="panel-header orders-panel-header">
+                        <div>
+                            <span class="panel-kicker">Order activity</span>
+                            <h3 id="ordersHeading">All Orders</h3>
+                            <p id="orderCountText">Loading orders...</p>
+                        </div>
+                        <span class="live-indicator"><i></i> Live updates</span>
+                    </div>
+
+                    <div class="orders-toolbar" aria-label="Order filters">
+                        <div class="orders-search-group">
+                            <label for="orderSearch">Search orders</label>
+                            <div class="search-wrapper">
+                                <span class="search-icon">⌕</span>
+                                <input type="search" id="orderSearch" placeholder="Search order number or customer..." autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="orders-status-group">
+                            <label for="statusFilter">Filter by status</label>
+                            <select id="statusFilter" class="filter-select">
+                                <option value="all">All statuses</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="shipped">Shipped</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <button type="button" class="clear-filter-button" id="clearFiltersButton">Clear filters</button>
+                    </div>
+
+                    <div class="orders-results-heading">
+                        <div>
+                            <h4>Order list</h4>
+                            <p>Choose an order to view its complete details.</p>
+                        </div>
+                    </div>
+
+                    <div class="state-container" id="loadingState">
+                        <div class="spinner"></div>
+                        <p>Loading orders...</p>
+                    </div>
+
+                    <div class="state-container error-state" id="errorState" hidden>
+                        <div class="state-icon">!</div>
+                        <h3>Unable to load orders</h3>
+                        <p id="errorMessage">Something went wrong.</p>
+                        <button type="button" class="primary-button" id="retryButton">Try Again</button>
+                    </div>
+
+                    <div class="state-container" id="emptyState" hidden>
+                        <div class="state-icon">▤</div>
+                        <h3>No orders found</h3>
+                        <p>There are no orders matching your current search or filter.</p>
+                    </div>
+
+                    <div class="table-wrapper" id="tableContainer" hidden>
+                        <table class="admin-table orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Payment</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="mobile-orders" id="mobileOrders" hidden></div>
+
+                    <div class="pagination" id="pagination" hidden>
+                        <button type="button" id="previousPage" class="pagination-button">← Previous</button>
+                        <span id="paginationInfo">Page 1</span>
+                        <button type="button" id="nextPage" class="pagination-button">Next →</button>
+                    </div>
+                </section>
+            </section>
+
+            <footer class="admin-footer">
+                <p>&copy; <span id="currentYear"></span> Skip Fashion.</p>
+            </footer>
+        </main>
+    </div>
+
+    <div class="notification" id="notification" role="status" aria-live="polite"></div>
+    <script src="../js/admin/orders.js"></script>
+</body>
+</html>

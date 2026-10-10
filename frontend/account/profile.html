@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="View your Skip Fashion account information.">
+	<title>My Profile | Skip Fashion</title>
+	<link rel="stylesheet" href="../css/global.css">
+	<link rel="stylesheet" href="../css/animations.css">
+	<link rel="stylesheet" href="../css/account.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body>
+	<div class="dashboard-shell">
+		<aside class="account-sidebar" id="accountSidebar">
+			<div class="sidebar-brand">
+				<a href="../index.html" class="dashboard-brand"><span class="dashboard-brand-mark">S</span><span class="dashboard-brand-text"><strong>SKIP FASHION</strong><small>Fashion & Accessories</small></span></a>
+			</div>
+			<div class="sidebar-user"><div class="user-avatar" id="sidebarAvatar">H</div><div class="sidebar-user-info"><strong id="sidebarUserName">Welcome</strong><span id="sidebarUserEmail">Customer</span></div></div>
+			<nav class="account-nav">
+				<div class="account-nav-label">ACCOUNT</div>
+				<a href="index.html" class="account-nav-item"><span>Overview</span></a>
+				<a href="orders.html" class="account-nav-item"><span>My Orders</span><span class="nav-count" id="ordersNavCount">0</span></a>
+				<a href="profile.html" class="account-nav-item active" aria-current="page"><span>My Profile</span></a>
+				<div class="account-nav-label secondary-label">SHOP</div>
+				<a href="../pages/shop.html" class="account-nav-item"><span>Continue Shopping</span></a>
+				<a href="../cart/cart.html" class="account-nav-item"><span>My Cart</span><span class="nav-count" id="cartNavCount">0</span></a>
+				<a href="../pages/contact.html" class="account-nav-item"><span>Help &amp; Support</span></a>
+			</nav>
+			<div class="sidebar-bottom"><a href="../index.html" class="back-store"><span>Back to Store</span></a><button type="button" class="sign-out-button" id="signOutButton"><span>Sign Out</span></button></div>
+		</aside>
+		<main class="dashboard-main">
+			<header class="dashboard-topbar">
+				<button type="button" class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Open account menu"><span></span><span></span><span></span></button>
+				<div class="topbar-title"><span>MY ACCOUNT</span><h1>My Profile</h1></div>
+				<div class="topbar-actions"><a href="../pages/shop.html" class="shop-button"><span>Shop</span></a><div class="topbar-user"><div class="topbar-avatar" id="topbarAvatar">H</div><div><strong id="topbarUserName">Customer</strong><span>Account</span></div></div></div>
+			</header>
+			<div class="dashboard-content">
+				<section class="dashboard-welcome"><div><span class="dashboard-eyebrow">ACCOUNT INFORMATION</span><h2>Your profile</h2><p>These details are associated with your Skip Fashion customer account.</p></div><a href="index.html" class="dashboard-shop-link">Account Overview</a></section>
+				<article class="dashboard-card">
+					<div class="card-header"><div><span class="card-eyebrow">PERSONAL DETAILS</span><h3>Profile information</h3></div></div>
+					<div class="info-list">
+						<div class="info-item"><span class="info-label">FULL NAME</span><strong class="info-value" id="profileName">Loading...</strong></div>
+						<div class="info-item"><span class="info-label">EMAIL ADDRESS</span><strong class="info-value" id="profileEmail">Loading...</strong></div>
+						<div class="info-item"><span class="info-label">PHONE NUMBER</span><strong class="info-value" id="profilePhone">Loading...</strong></div>
+						<div class="info-item"><span class="info-label">CUSTOMER SINCE</span><strong class="info-value" id="profileJoined">—</strong></div>
+					</div>
+				</article>
+				<article class="support-card profile-support">
+					<div><span class="card-eyebrow">ACCOUNT HELP</span><h3>Need to change your details?</h3><p>Contact our team for help with updating your account information.</p></div>
+					<a href="../pages/contact.html" class="support-button">Contact Us</a>
+				</article>
+			</div>
+		</main>
+	</div>
+	<div class="sidebar-overlay" id="sidebarOverlay"></div>
+	<script src="../js/account.js"></script>
+</body>
+</html>

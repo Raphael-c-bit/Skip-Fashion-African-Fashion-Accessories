@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Your Skip Fashion shopping cart."
+    >
+
+    <title>Your Cart | Skip Fashion</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/cart.css"
+    >
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span>Authentic African craftsmanship</span>
+            <span aria-hidden="true">•</span>
+            <span>Order securely through WhatsApp</span>
+            <span aria-hidden="true">•</span>
+            <span>Account required to place an order</span>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="../index.html" class="brand" aria-label="Skip Fashion home">
+                <span class="brand-symbol">S</span>
+                <span>
+                    <strong>SKIP FASHION</strong>
+                    <small>Attire &amp; Handmade Crafts</small>
+                </span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="../index.html">Home</a>
+                <a href="../pages/shop.html">Shop</a>
+                <a href="../pages/collections.html">Collections</a>
+                <a href="../pages/how-it-works.html">How It Works</a>
+                <a href="../pages/contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="search-button" id="searchButton" aria-label="Search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m16 16 5 5"></path>
+                    </svg>
+                </button>
+
+                <a href="../auth/login.html" id="accountLink" class="account-button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path>
+                    </svg>
+                    <span>Account</span>
+                </a>
+
+                <a href="../cart/cart.html" class="account-button cart-header-link" aria-label="Shopping cart">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="9" cy="20" r="1"></circle>
+                        <circle cx="18" cy="20" r="1"></circle>
+                        <path d="M2 3h2l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L22 7H5"></path>
+                    </svg>
+                    <span>Cart</span>
+                    <span id="cartCount" class="cart-count" hidden>0</span>
+                </a>
+
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile navigation">
+            <a href="../index.html">Home</a>
+            <a href="../pages/shop.html">Shop</a>
+            <a href="../pages/collections.html">Collections</a>
+            <a href="../pages/how-it-works.html">How It Works</a>
+            <a href="../pages/contact.html">Contact</a>
+            <a href="../auth/login.html" id="mobileAccountLink">Account</a>
+            <a href="../cart/cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay" hidden>
+        <div class="search-panel">
+            <div class="search-panel-header">
+                <span>SEARCH SKIP FASHION</span>
+                <button type="button" id="searchClose" class="search-close" aria-label="Close search">×</button>
+            </div>
+
+            <div class="search-form">
+                <input type="search" id="searchInput" placeholder="Search attire, crafts, colours..." autocomplete="off">
+                <button type="button" id="closeSearch" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Breadcrumb -->
+        <section class="page-header">
+
+            <div class="container">
+
+                <div class="breadcrumb">
+
+                    <a href="../index.html">
+                        Home
+                    </a>
+
+                    <span>
+                        /
+                    </span>
+
+                    <span>
+                        Cart
+                    </span>
+
+                </div>
+
+
+                <h1>
+                    Your Cart
+                </h1>
+
+                <p>
+                    Review your selected heritage pieces before placing your order.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Cart Area -->
+        <section class="cart-section">
+
+            <div class="container">
+
+
+                <!-- Loading -->
+                <div
+                    id="cartLoading"
+                    class="cart-state cart-loading"
+                >
+
+                    <div class="cart-loading-spinner"></div>
+
+                    <h2>
+                        Loading your cart
+                    </h2>
+
+                    <p>
+                        Please wait while we retrieve your selected items.
+                    </p>
+
+                </div>
+
+
+                <!-- Error -->
+                <div
+                    id="cartError"
+                    class="cart-state cart-error"
+                    hidden
+                >
+
+                    <div class="cart-state-icon">
+                        !
+                    </div>
+
+                    <h2>
+                        We couldn't load your cart
+                    </h2>
+
+                    <p id="cartErrorMessage">
+                        Something went wrong while loading your cart.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="retryCart"
+                        class="primary-button"
+                    >
+                        Try Again
+                    </button>
+
+                </div>
+
+
+                <!-- Empty Cart -->
+                <div
+                    id="cartEmpty"
+                    class="cart-state cart-empty"
+                    hidden
+                >
+
+                    <div class="cart-state-icon">
+                        Cart
+                    </div>
+
+                    <h2>
+                        Your cart is empty
+                    </h2>
+
+                    <p>
+                        You haven't selected any heritage pieces yet.
+                    </p>
+
+                    <a
+                        href="../pages/shop.html"
+                        class="primary-button"
+                    >
+                        Continue Shopping
+                    </a>
+
+                </div>
+
+
+                <!-- Cart Content -->
+                <div
+                    id="cartContent"
+                    class="cart-content"
+                    hidden
+                >
+
+                    <div class="cart-layout">
+
+
+                        <!-- Selected Items -->
+                        <div class="cart-items-section">
+
+                            <div class="cart-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        YOUR SELECTION
+                                    </span>
+
+                                    <h2>
+                                        Selected Items
+                                    </h2>
+
+                                </div>
+
+                                <span
+                                    id="cartItemCount"
+                                    class="cart-item-count"
+                                >
+                                    0
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                id="cartItems"
+                                class="cart-items"
+                            >
+                            </div>
+
+
+                            <div class="cart-actions">
+
+                                <a
+                                    href="../pages/shop.html"
+                                    class="continue-shopping"
+                                >
+                                    ← Continue Shopping
+                                </a>
+
+                                <button
+                                    type="button"
+                                    id="clearCartButton"
+                                    class="clear-cart-button"
+                                >
+                                    Clear Cart
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Order Summary -->
+                        <aside class="cart-summary">
+
+                            <div class="cart-summary-inner">
+
+                                <span class="section-eyebrow">
+                                    ORDER SUMMARY
+                                </span>
+
+                                <h2>
+                                    Your Order
+                                </h2>
+
+
+                                <div class="summary-row">
+
+                                    <span>
+                                        Quantity
+                                    </span>
+
+                                    <strong id="summaryQuantity">
+                                        0
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="summary-row">
+
+                                    <span>
+                                        Subtotal
+                                    </span>
+
+                                    <strong id="summarySubtotal">
+                                        ₦0.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="summary-divider"></div>
+
+
+                                <div class="summary-total">
+
+                                    <span>
+                                        Total
+                                    </span>
+
+                                    <strong id="summaryTotal">
+                                        ₦0.00
+                                    </strong>
+
+                                </div>
+
+
+                                <p
+                                    id="cartSummaryText"
+                                    class="cart-summary-text"
+                                >
+                                    Your selected items will appear here.
+                                </p>
+
+
+                                <a
+                                    href="../checkout/checkout.html"
+                                    id="checkoutButton"
+                                    class="checkout-button"
+                                >
+                                    Proceed to Checkout
+                                </a>
+
+
+                                <p class="checkout-note">
+                                    Your order details will be reviewed before final confirmation.
+                                </p>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-main container">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon" aria-hidden="true">H</span>
+                    <span class="logo-content">
+                        <strong>SKIP FASHION</strong>
+                        <small>Attire &amp; Handmade Crafts</small>
+                    </span>
+                </a>
+                <p>Preserving culture through clothing, craftsmanship and meaningful handmade pieces.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="../index.html">Home</a>
+                <a href="../pages/shop.html">Shop</a>
+                <a href="../pages/collections.html">Collections</a>
+                <a href="../pages/how-it-works.html">How It Works</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Help</h4>
+                <a href="../pages/contact.html">Contact Us</a>
+                <a href="../account/index.html">My Account</a>
+                <a href="../account/orders.html">My Orders</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Shopping</h4>
+                <a href="../pages/shop.html">Traditional Attire</a>
+                <a href="../pages/shop.html">Handmade Crafts</a>
+                <a href="../pages/shop.html">New Arrivals</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© <span id="currentYear"></span> Skip Fashion Attire &amp; Handmade Crafts. All rights reserved.</p>
+                <p>Made with culture.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="../js/cart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Edit Product | Skip Fashion</title>
+<link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin_products.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body class="admin-body edit-product-page">
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link active"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar" id="sidebarAvatar">A</div>
+                    <div class="admin-user-mini-info">
+                        <strong id="sidebarAdminName">Administrator</strong>
+                        <span id="sidebarAdminRole">Admin</span>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="admin-logout-btn"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebarToggle"
+                        aria-label="Open menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="page-heading">
+                        <span class="page-eyebrow">Skip Fashion Admin</span>
+                        <h1>Edit Product</h1>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <a href="../index.html" class="view-store-link" target="_blank" rel="noopener">
+                        View Store
+                    </a>
+                    <div class="topbar-user">
+                        <div class="admin-avatar" id="topbarAvatar">A</div>
+                        <div class="topbar-user-info">
+                            <strong id="topbarAdminName">Administrator</strong>
+                            <span id="topbarAdminEmail"></span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <section class="dashboard-welcome">
+                    <div>
+                        <span class="section-eyebrow">Catalog</span>
+                        <h2>Edit Product</h2>
+                        <p>Update product information, variants and images.</p>
+                    </div>
+                    <a href="products.html" class="admin-secondary-button">
+                        Back to Products
+                    </a>
+                </section>
+
+                <!-- Product Loading -->
+                <div
+                    class="product-form-loading"
+                    id="productFormLoading"
+                >
+                    Loading product...
+                </div>
+
+                <!-- Product Error -->
+                <div
+                    class="admin-alert admin-alert-error"
+                    id="productFormError"
+                    hidden
+                >
+                    <span id="productFormErrorMessage"></span>
+
+                    <button
+                        type="button"
+                        id="dismissProductError"
+                        aria-label="Dismiss error"
+                    >
+                        ×
+                    </button>
+                </div>
+
+                <!-- Product Success -->
+                <div
+                    class="admin-alert admin-alert-success"
+                    id="productFormSuccess"
+                    hidden
+                >
+                    <span id="productFormSuccessMessage"></span>
+                </div>
+
+                <!-- Product Form -->
+                <form
+                    id="productForm"
+                    class="admin-form"
+                    novalidate
+                    hidden
+                >
+
+                    <!-- Product Information -->
+                    <section class="admin-panel admin-form-card">
+
+                        <div class="admin-form-card-header">
+                            <div>
+                                <h2 id="productFormTitle">
+                                    Edit Product
+                                </h2>
+
+                                <p>
+                                    Update the basic information for this product.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-grid">
+
+                            <!-- Product Name -->
+                            <div class="admin-form-group">
+                                <label for="productName">
+                                    Product Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    name="name"
+                                    placeholder="Enter product name"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Product Slug -->
+                            <div class="admin-form-group">
+                                <label for="productSlug">
+                                    Product Slug
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productSlug"
+                                    name="slug"
+                                    placeholder="product-slug"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Category -->
+                            <div class="admin-form-group">
+                                <label for="productCategory">
+                                    Category
+                                </label>
+
+                                <select
+                                    id="productCategory"
+                                    name="category_id"
+                                    required
+                                >
+                                    <option value="">
+                                        Select category
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="admin-form-group">
+                                <label for="productPrice">
+                                    Price
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="productPrice"
+                                    name="price"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0.00"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Currency -->
+                            <div class="admin-form-group">
+                                <label for="productCurrency">
+                                    Currency
+                                </label>
+
+                                <select
+                                    id="productCurrency"
+                                    name="currency"
+                                >
+                                    <option value="NGN">
+                                        NGN
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Product Type -->
+                            <div class="admin-form-group">
+                                <label for="productType">
+                                    Product Type
+                                </label>
+
+                                <select
+                                    id="productType"
+                                    name="product_type"
+                                    required
+                                >
+                                    <option value="">
+                                        Select product type
+                                    </option>
+
+                                    <option value="physical">
+                                        Physical
+                                    </option>
+
+                                    <option value="digital">
+                                        Digital
+                                    </option>
+                                </select>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="admin-form-group admin-form-group-full">
+                                <label for="productDescription">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="productDescription"
+                                    name="description"
+                                    rows="6"
+                                    placeholder="Enter product description"
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Product Visibility -->
+                    <section class="admin-panel admin-form-card">
+
+                        <div class="admin-form-card-header">
+                            <div>
+                                <h2>
+                                    Product Visibility
+                                </h2>
+
+                                <p>
+                                    Control whether this product is visible and featured.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-options">
+
+                            <label class="admin-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    id="productActive"
+                                    name="is_active"
+                                    checked
+                                >
+
+                                <span>
+                                    <strong>
+                                        Active Product
+                                    </strong>
+
+                                    <small>
+                                        Customers can see this product when it is active.
+                                    </small>
+                                </span>
+
+                            </label>
+
+                            <label class="admin-checkbox">
+
+                                <input
+                                    type="checkbox"
+                                    id="productFeatured"
+                                    name="is_featured"
+                                >
+
+                                <span>
+                                    <strong>
+                                        Featured Product
+                                    </strong>
+
+                                    <small>
+                                        Display this product as a featured product.
+                                    </small>
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Product Actions -->
+                    <div class="admin-form-actions">
+
+                        <a
+                            href="products.html"
+                            class="admin-secondary-button"
+                        >
+                            Cancel
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="admin-primary-btn"
+                            id="saveProductButton"
+                        >
+                            Update Product
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <!-- Product Variants -->
+                <section
+                    class="admin-panel product-management-section"
+                    id="productVariantsSection"
+                    hidden
+                >
+
+                    <div class="product-management-header">
+
+                        <div>
+                            <h2>
+                                Product Variants
+                            </h2>
+
+                            <p>
+                                Manage sizes, colours, stock and availability.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="admin-primary-btn"
+                            id="addVariantButton"
+                        >
+                            Add Variant
+                        </button>
+
+                    </div>
+
+                    <!-- Variant Error -->
+                    <div
+                        class="admin-alert admin-alert-error"
+                        id="variantError"
+                        hidden
+                    >
+                        <span id="variantErrorMessage"></span>
+
+                        <button
+                            type="button"
+                            id="dismissVariantError"
+                            aria-label="Dismiss variant error"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    <!-- Variant Success -->
+                    <div
+                        class="admin-alert admin-alert-success"
+                        id="variantSuccess"
+                        hidden
+                    >
+                        <span id="variantSuccessMessage"></span>
+                    </div>
+
+                    <!-- Variant Form -->
+                    <div
+                        id="variantFormContainer"
+                        class="variant-form-container"
+                        hidden
+                    >
+
+                        <div class="variant-form-header">
+
+                            <h3 id="variantFormTitle">
+                                Add Variant
+                            </h3>
+
+                            <button
+                                type="button"
+                                class="admin-secondary-button"
+                                id="cancelVariantButton"
+                            >
+                                Cancel
+                            </button>
+
+                        </div>
+
+                        <form id="variantForm">
+
+                            <input
+                                type="hidden"
+                                id="editingVariantId"
+                            >
+
+                            <div class="admin-form-grid">
+
+                                <!-- Option Type -->
+                                <div class="admin-form-group">
+
+                                    <label for="variantOptionType">
+                                        Option Type
+                                    </label>
+
+                                    <select
+                                        id="variantOptionType"
+                                        required
+                                    >
+                                        <option value="">
+                                            Select option type
+                                        </option>
+
+                                        <option value="size">
+                                            Size
+                                        </option>
+
+                                        <option value="color">
+                                            Color
+                                        </option>
+
+                                        <option value="material">
+                                            Material
+                                        </option>
+
+                                        <option value="style">
+                                            Style
+                                        </option>
+
+                                        <option value="custom">
+                                            Custom
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <!-- Option Value -->
+                                <div class="admin-form-group">
+
+                                    <label for="variantOptionValue">
+                                        Option Value
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="variantOptionValue"
+                                        placeholder="e.g. XL"
+                                        required
+                                    >
+
+                                </div>
+
+                                <!-- Colour Name -->
+                                <div class="admin-form-group">
+
+                                    <label for="variantColorName">
+                                        Colour Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="variantColorName"
+                                        placeholder="e.g. Royal Blue"
+                                    >
+
+                                </div>
+
+                                <!-- Colour Code -->
+                                <div class="admin-form-group">
+
+                                    <label for="variantColorCode">
+                                        Colour Code
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="variantColorCode"
+                                        placeholder="e.g. #4169E1"
+                                    >
+
+                                </div>
+
+                                <!-- Stock -->
+                                <div class="admin-form-group">
+
+                                    <label for="variantStock">
+                                        Stock Quantity
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="variantStock"
+                                        min="0"
+                                        value="0"
+                                        required
+                                    >
+
+                                </div>
+
+                                <!-- Availability -->
+                                <div class="admin-form-group admin-checkbox-group">
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="variantAvailable"
+                                            checked
+                                        >
+
+                                        <span>
+                                            Variant is available
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="variant-form-actions">
+
+                                <button
+                                    type="submit"
+                                    class="admin-primary-btn"
+                                    id="saveVariantButton"
+                                >
+                                    Save Variant
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="admin-secondary-button"
+                                    id="cancelVariantFormButton"
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <!-- Variant Loading -->
+                    <div
+                        id="variantsLoading"
+                        class="table-loading"
+                        hidden
+                    >
+                        Loading variants...
+                    </div>
+
+                    <!-- Variant Empty -->
+                    <div
+                        id="variantsEmpty"
+                        class="table-empty"
+                        hidden
+                    >
+                        No variants have been added to this product yet.
+                    </div>
+
+                    <!-- Variant Table -->
+                    <div
+                        id="variantsTableContainer"
+                        class="admin-panel products-table-card"
+                        hidden
+                    >
+
+                        <div class="table-wrapper">
+
+                            <table class="admin-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Option
+                                        </th>
+
+                                        <th>
+                                            Colour
+                                        </th>
+
+                                        <th>
+                                            Stock
+                                        </th>
+
+                                        <th>
+                                            Availability
+                                        </th>
+
+                                        <th>
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="variantsTableBody">
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Variant Images -->
+                <section
+                    class="admin-panel product-management-section"
+                    id="variantImagesSection"
+                    hidden
+                >
+
+                    <div class="product-management-header">
+
+                        <div>
+                            <h2>
+                                Variant Images
+                            </h2>
+
+                            <p>
+                                Add and manage images belonging to each product variant.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Image Error -->
+                    <div
+                        class="admin-alert admin-alert-error"
+                        id="imageError"
+                        hidden
+                    >
+                        <span id="imageErrorMessage"></span>
+
+                        <button
+                            type="button"
+                            id="dismissImageError"
+                            aria-label="Dismiss image error"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    <!-- Image Success -->
+                    <div
+                        class="admin-alert admin-alert-success"
+                        id="imageSuccess"
+                        hidden
+                    >
+                        <span id="imageSuccessMessage"></span>
+                    </div>
+
+                    <!-- Variant Selector -->
+                    <div class="variant-image-toolbar">
+
+                        <div class="admin-form-group">
+
+                            <label for="imageVariantSelect">
+                                Variant
+                            </label>
+
+                            <select id="imageVariantSelect">
+                                <option value="">
+                                    Select a variant
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="admin-primary-btn"
+                            id="addImageButton"
+                            disabled
+                        >
+                            Add Image
+                        </button>
+
+                    </div>
+
+                    <!-- Image Form -->
+                    <div
+                        id="imageFormContainer"
+                        class="variant-form-container"
+                        hidden
+                    >
+
+                        <div class="variant-form-header">
+
+                            <h3 id="imageFormTitle">
+                                Add Image
+                            </h3>
+
+                            <button
+                                type="button"
+                                class="admin-secondary-button"
+                                id="cancelImageButton"
+                            >
+                                Cancel
+                            </button>
+
+                        </div>
+
+                        <form id="imageForm">
+
+                            <input
+                                type="hidden"
+                                id="editingImageId"
+                            >
+
+                            <div class="admin-form-grid">
+
+                                <!-- Image File -->
+                                <div class="admin-form-group admin-form-group-full">
+
+                                    <label for="imageFile">
+                                        Image File
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="imageFile"
+                                        accept="image/jpeg,image/png,image/webp,image/gif"
+                                    >
+
+                                    <small>JPG, PNG, WEBP or GIF. Maximum size: 5 MB.</small>
+
+                                </div>
+
+                                <!-- Alt Text -->
+                                <div class="admin-form-group">
+
+                                    <label for="imageAltText">
+                                        Alt Text
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="imageAltText"
+                                        placeholder="Describe the product image"
+                                    >
+
+                                </div>
+
+                                <!-- Sort Order -->
+                                <div class="admin-form-group">
+
+                                    <label for="imageSortOrder">
+                                        Sort Order
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="imageSortOrder"
+                                        min="0"
+                                        value="0"
+                                    >
+
+                                </div>
+
+                                <!-- Primary -->
+                                <div class="admin-form-group admin-checkbox-group">
+
+                                    <label>
+
+                                        <input
+                                            type="checkbox"
+                                            id="imageIsPrimary"
+                                        >
+
+                                        <span>
+                                            Set as primary image
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="variant-form-actions">
+
+                                <button
+                                    type="submit"
+                                    class="admin-primary-btn"
+                                    id="saveImageButton"
+                                >
+                                    Save Image
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="admin-secondary-button"
+                                    id="cancelImageFormButton"
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <!-- Images Loading -->
+                    <div
+                        id="imagesLoading"
+                        class="table-loading"
+                        hidden
+                    >
+                        Loading images...
+                    </div>
+
+                    <!-- Images Empty -->
+                    <div
+                        id="imagesEmpty"
+                        class="table-empty"
+                    >
+                        Select a variant to manage its images.
+                    </div>
+
+                    <!-- Images Grid -->
+                    <div
+                        id="imagesGrid"
+                        class="variant-images-grid"
+                        hidden
+                    ></div>
+
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <footer class="admin-footer">
+
+                <p>
+                    © <span id="currentYear"></span>
+                    Skip Fashion.
+                    All rights reserved.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin/product-form.js"></script>
+
+    <script>
+        const currentYearElement =
+            document.getElementById("currentYear");
+
+        if (currentYearElement) {
+            currentYearElement.textContent =
+                new Date().getFullYear();
+        }
+    </script>
+
+</body>
+</html>

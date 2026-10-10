@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | Skip Fashion</title>
+<link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/settings.css"
+    >
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body class="admin-body settings-page">
+
+    <div class="admin-layout">
+
+        <aside
+            class="admin-sidebar"
+            id="adminSidebar"
+        >
+
+            <div class="admin-brand">
+
+                <a
+                    href="dashboard.html"
+                    class="admin-brand-link"
+                >
+
+                    <span class="admin-brand-mark">S
+                    </span>
+
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+            <nav class="admin-nav">
+
+                <div class="admin-nav-section">
+
+                    <span class="admin-nav-label">
+                        Overview
+                    </span>
+
+                    <a
+                        href="dashboard.html"
+                        class="admin-nav-link"
+                    >
+                        <span class="nav-icon">⌂</span>
+                        <span>Dashboard</span>
+                    </a>
+
+                </div>
+
+                <div class="admin-nav-section">
+
+                    <span class="admin-nav-label">
+                        Catalog
+                    </span>
+
+                    <a
+                        href="products.html"
+                        class="admin-nav-link"
+                    >
+                        <span class="nav-icon">▣</span>
+                        <span>Products</span>
+                    </a>
+
+                    <a
+                        href="categories.html"
+                        class="admin-nav-link"
+                    >
+                        <span class="nav-icon">◫</span>
+                        <span>Categories</span>
+                    </a>
+
+                </div>
+
+                <div class="admin-nav-section">
+
+                    <span class="admin-nav-label">
+                        Sales
+                    </span>
+
+                    <a
+                        href="orders.html"
+                        class="admin-nav-link"
+                    >
+                        <span class="nav-icon">▤</span>
+                        <span>Orders</span>
+                    </a>
+
+                </div>
+
+                <div class="admin-nav-section">
+
+                    <span class="admin-nav-label">
+                        Customers
+                    </span>
+
+                    <a
+                        href="customers.html"
+                        class="admin-nav-link"
+                    >
+                        <span class="nav-icon">♙</span>
+                        <span>Customers</span>
+                    </a>
+
+                </div>
+
+                <div class="admin-nav-section">
+
+                    <span class="admin-nav-label">
+                        System
+                    </span>
+
+                    <a
+                        href="settings.html"
+                        class="admin-nav-link active"
+                        aria-current="page"
+                    >
+                        <span class="nav-icon">⚙</span>
+                        <span>Settings</span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+            <div class="admin-sidebar-footer">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-avatar"
+                        id="sidebarAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-mini-info">
+
+                        <strong id="sidebarAdminName">
+                            Administrator
+                        </strong>
+
+                        <span id="sidebarAdminRole">
+                            Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="admin-logout-btn"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+        <div
+            class="admin-overlay"
+            id="adminOverlay"
+        ></div>
+
+        <main class="admin-main">
+
+            <header class="admin-topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebarToggle"
+                        aria-label="Open menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="page-heading">
+
+                        <span class="page-eyebrow">
+                            Skip Fashion Admin
+                        </span>
+
+                        <h1>
+                            Settings
+                        </h1>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <a
+                        href="../index.html"
+                        class="view-store-link"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Store
+                    </a>
+
+                    <div class="topbar-user">
+
+                        <div
+                            class="admin-avatar"
+                            id="topbarAvatar"
+                        >
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarAdminName">
+                                Administrator
+                            </strong>
+
+                            <span id="topbarAdminEmail"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="admin-content">
+
+                <section class="dashboard-welcome settings-welcome">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            System Configuration
+                        </span>
+
+                        <h2>
+                            Store Settings
+                        </h2>
+
+                        <p>
+                            Configure the basic information and
+                            behaviour of your Skip Fashion store.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <div
+                    class="settings-alert settings-alert-success"
+                    id="settingsSuccess"
+                    hidden
+                >
+                    <span id="settingsSuccessMessage">
+                        Settings saved successfully.
+                    </span>
+
+                    <button
+                        type="button"
+                        id="dismissSuccess"
+                        aria-label="Dismiss message"
+                    >
+                        &times;
+                    </button>
+                </div>
+
+                <div
+                    class="settings-alert settings-alert-error"
+                    id="settingsError"
+                    hidden
+                >
+                    <span id="settingsErrorMessage"></span>
+
+                    <button
+                        type="button"
+                        id="dismissError"
+                        aria-label="Dismiss error"
+                    >
+                        &times;
+                    </button>
+                </div>
+
+                <div class="settings-layout">
+
+                    <aside class="settings-navigation">
+
+                        <button
+                            type="button"
+                            class="settings-nav-item active"
+                            data-section="store"
+                        >
+                            <span class="settings-nav-icon">
+                                ◈
+                            </span>
+
+                            <span>
+                                <strong>Store</strong>
+                                <small>Business information</small>
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="settings-nav-item"
+                            data-section="orders"
+                        >
+                            <span class="settings-nav-icon">
+                                ▤
+                            </span>
+
+                            <span>
+                                <strong>Orders</strong>
+                                <small>Order preferences</small>
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="settings-nav-item"
+                            data-section="customers"
+                        >
+                            <span class="settings-nav-icon">
+                                ♙
+                            </span>
+
+                            <span>
+                                <strong>Customers</strong>
+                                <small>Account preferences</small>
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="settings-nav-item"
+                            data-section="notifications"
+                        >
+                            <span class="settings-nav-icon">
+                                ✉
+                            </span>
+
+                            <span>
+                                <strong>Notifications</strong>
+                                <small>Admin alerts</small>
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="settings-nav-item"
+                            data-section="appearance"
+                        >
+                            <span class="settings-nav-icon">
+                                ◐
+                            </span>
+
+                            <span>
+                                <strong>Appearance</strong>
+                                <small>Dashboard preferences</small>
+                            </span>
+                        </button>
+
+                    </aside>
+
+                    <div class="settings-sections">
+
+                        <section
+                            class="settings-section active"
+                            data-section-content="store"
+                        >
+
+                            <div class="settings-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Store
+                                    </span>
+
+                                    <h2>
+                                        Store Information
+                                    </h2>
+
+                                    <p>
+                                        Basic information displayed
+                                        throughout your store.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <form
+                                id="storeSettingsForm"
+                                class="settings-form"
+                            >
+
+                                <div class="settings-form-grid">
+
+                                    <div class="settings-field full-width">
+
+                                        <label for="storeName">
+                                            Store Name
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="storeName"
+                                            name="storeName"
+                                            value="Skip Fashion"
+                                            required
+                                        >
+
+                                    </div>
+
+                                    <div class="settings-field">
+
+                                        <label for="storeEmail">
+                                            Store Email
+                                        </label>
+
+                                        <input
+                                            type="email"
+                                            id="storeEmail"
+                                            name="storeEmail"
+                                            placeholder="info@example.com"
+                                        >
+
+                                    </div>
+
+                                    <div class="settings-field">
+
+                                        <label for="storePhone">
+                                            Store Phone
+                                        </label>
+
+                                        <input
+                                            type="tel"
+                                            id="storePhone"
+                                            name="storePhone"
+                                            placeholder="+234..."
+                                        >
+
+                                    </div>
+
+                                    <div class="settings-field">
+
+                                        <label for="storeCountry">
+                                            Country
+                                        </label>
+
+                                        <select
+                                            id="storeCountry"
+                                            name="storeCountry"
+                                        >
+                                            <option value="Nigeria">
+                                                Nigeria
+                                            </option>
+
+                                            <option value="Ghana">
+                                                Ghana
+                                            </option>
+
+                                            <option value="Kenya">
+                                                Kenya
+                                            </option>
+
+                                            <option value="South Africa">
+                                                South Africa
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="settings-field">
+
+                                        <label for="storeCurrency">
+                                            Currency
+                                        </label>
+
+                                        <select
+                                            id="storeCurrency"
+                                            name="storeCurrency"
+                                        >
+                                            <option value="NGN">
+                                                Nigerian Naira (NGN)
+                                            </option>
+
+                                            <option value="GHS">
+                                                Ghanaian Cedi (GHS)
+                                            </option>
+
+                                            <option value="KES">
+                                                Kenyan Shilling (KES)
+                                            </option>
+
+                                            <option value="ZAR">
+                                                South African Rand (ZAR)
+                                            </option>
+
+                                            <option value="USD">
+                                                US Dollar (USD)
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="settings-field full-width">
+
+                                        <label for="storeAddress">
+                                            Store Address
+                                        </label>
+
+                                        <textarea
+                                            id="storeAddress"
+                                            name="storeAddress"
+                                            rows="3"
+                                            placeholder="Enter your business address"
+                                        ></textarea>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="settings-form-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="admin-primary-btn"
+                                    >
+                                        Save Store Settings
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                        <section
+                            class="settings-section"
+                            data-section-content="orders"
+                            hidden
+                        >
+
+                            <div class="settings-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Orders
+                                    </span>
+
+                                    <h2>
+                                        Order Preferences
+                                    </h2>
+
+                                    <p>
+                                        Configure how orders are
+                                        handled by the store.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <form
+                                id="orderSettingsForm"
+                                class="settings-form"
+                            >
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Allow customer orders
+                                        </strong>
+
+                                        <p>
+                                            Customers can place orders
+                                            through the store.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="allowOrders"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Require customer account
+                                        </strong>
+
+                                        <p>
+                                            Customers must sign in
+                                            before placing an order.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="requireAccount"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Send order confirmation
+                                        </strong>
+
+                                        <p>
+                                            Enable confirmation
+                                            notifications after orders.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="orderConfirmation"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-field settings-small-field">
+
+                                    <label for="defaultOrderStatus">
+                                        Default Order Status
+                                    </label>
+
+                                    <select
+                                        id="defaultOrderStatus"
+                                    >
+                                        <option value="pending">
+                                            Pending
+                                        </option>
+
+                                        <option value="processing">
+                                            Processing
+                                        </option>
+
+                                        <option value="confirmed">
+                                            Confirmed
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="settings-form-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="admin-primary-btn"
+                                    >
+                                        Save Order Settings
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                        <section
+                            class="settings-section"
+                            data-section-content="customers"
+                            hidden
+                        >
+
+                            <div class="settings-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Customers
+                                    </span>
+
+                                    <h2>
+                                        Customer Preferences
+                                    </h2>
+
+                                    <p>
+                                        Configure customer account
+                                        behaviour.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <form
+                                id="customerSettingsForm"
+                                class="settings-form"
+                            >
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Allow customer registration
+                                        </strong>
+
+                                        <p>
+                                            New customers can create
+                                            accounts on the store.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="allowRegistration"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Require email verification
+                                        </strong>
+
+                                        <p>
+                                            Require customers to verify
+                                            their email address.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="requireEmailVerification"
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Allow customer reviews
+                                        </strong>
+
+                                        <p>
+                                            Customers can submit reviews
+                                            for purchased products.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="allowReviews"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-form-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="admin-primary-btn"
+                                    >
+                                        Save Customer Settings
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                        <section
+                            class="settings-section"
+                            data-section-content="notifications"
+                            hidden
+                        >
+
+                            <div class="settings-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Notifications
+                                    </span>
+
+                                    <h2>
+                                        Admin Notifications
+                                    </h2>
+
+                                    <p>
+                                        Choose the notifications shown
+                                        to administrators.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <form
+                                id="notificationSettingsForm"
+                                class="settings-form"
+                            >
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            New order notifications
+                                        </strong>
+
+                                        <p>
+                                            Notify the administrator when
+                                            a new order is received.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="notifyNewOrders"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Order status notifications
+                                        </strong>
+
+                                        <p>
+                                            Show notifications when an
+                                            order status changes.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="notifyOrderStatus"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Low stock notifications
+                                        </strong>
+
+                                        <p>
+                                            Notify the administrator when
+                                            product stock becomes low.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="notifyLowStock"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            New customer notifications
+                                        </strong>
+
+                                        <p>
+                                            Notify the administrator when
+                                            a new customer registers.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="notifyNewCustomers"
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-form-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="admin-primary-btn"
+                                    >
+                                        Save Notification Settings
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                        <section
+                            class="settings-section"
+                            data-section-content="appearance"
+                            hidden
+                        >
+
+                            <div class="settings-section-header">
+
+                                <div>
+
+                                    <span class="section-eyebrow">
+                                        Appearance
+                                    </span>
+
+                                    <h2>
+                                        Dashboard Appearance
+                                    </h2>
+
+                                    <p>
+                                        Customize your administrator
+                                        dashboard preferences.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <form
+                                id="appearanceSettingsForm"
+                                class="settings-form"
+                            >
+
+                                <div class="settings-field">
+
+                                    <label for="dashboardDensity">
+                                        Dashboard Density
+                                    </label>
+
+                                    <select
+                                        id="dashboardDensity"
+                                    >
+                                        <option value="comfortable">
+                                            Comfortable
+                                        </option>
+
+                                        <option value="compact">
+                                            Compact
+                                        </option>
+                                    </select>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Show welcome message
+                                        </strong>
+
+                                        <p>
+                                            Display the welcome section
+                                            on the admin dashboard.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="showWelcome"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-option">
+
+                                    <div>
+
+                                        <strong>
+                                            Confirm destructive actions
+                                        </strong>
+
+                                        <p>
+                                            Ask for confirmation before
+                                            potentially destructive actions.
+                                        </p>
+
+                                    </div>
+
+                                    <label class="settings-switch">
+
+                                        <input
+                                            type="checkbox"
+                                            id="confirmActions"
+                                            checked
+                                        >
+
+                                        <span></span>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="settings-form-actions">
+
+                                    <button
+                                        type="submit"
+                                        class="admin-primary-btn"
+                                    >
+                                        Save Appearance Settings
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </section>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer class="admin-footer">
+
+                <p>
+                    ©
+                    <span id="currentYear"></span>
+                    Skip Fashion.
+                    All rights reserved.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin/settings.js"></script>
+
+</body>
+</html>

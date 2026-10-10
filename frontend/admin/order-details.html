@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Order Details | Skip Fashion</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/orders.css">
+    <link rel="stylesheet" href="../css/order-details.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+                <button type="button" class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link active"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar" id="profileAvatar">A</div>
+                    <div class="admin-user-mini-info">
+                        <strong id="sidebarAdminName">Administrator</strong>
+                        <span id="sidebarAdminRole">Admin</span>
+                    </div>
+                </div>
+                <button type="button" class="admin-logout-btn" id="logoutButton">
+                    <span>↪</span> Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <main class="admin-main">
+
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <div class="page-heading">
+                        <span class="page-eyebrow">Skip Fashion Admin</span>
+                        <h1>Order Details</h1>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <a href="orders.html" class="view-store-link">Back to Orders</a>
+                    <div class="topbar-user">
+                        <div class="admin-avatar" id="topbarAvatar">A</div>
+                        <div class="topbar-user-info">
+                            <strong id="topbarAdminName">Administrator</strong>
+                            <span id="topbarAdminEmail">Admin account</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+
+                <!-- Loading -->
+                <div
+                    class="state-container"
+                    id="loadingState"
+                >
+                    <div class="loader"></div>
+                    <h3>Loading order...</h3>
+                    <p>
+                        Please wait while we retrieve the order details.
+                    </p>
+                </div>
+
+                <!-- Error -->
+                <div
+                    class="state-container error-state hidden"
+                    id="errorState"
+                >
+                    <div class="state-icon">!</div>
+
+                    <h3>Unable to load order</h3>
+
+                    <p id="errorMessage">
+                        Something went wrong while loading this order.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="retryButton"
+                    >
+                        Try Again
+                    </button>
+                </div>
+
+                <!-- Order Content -->
+                <div
+                    class="order-page hidden"
+                    id="orderContent"
+                >
+
+                    <!-- Back Button -->
+                    <div class="page-navigation">
+
+                        <a
+                            href="orders.html"
+                            class="back-button"
+                        >
+                            <span>←</span>
+                            <span>Back to Orders</span>
+                        </a>
+
+                    </div>
+
+                    <!-- Order Header -->
+                    <div class="order-header-card">
+
+                        <div class="order-header-main">
+
+                            <div>
+
+                                <div class="order-title-row">
+
+                                    <h2 id="orderNumber">
+                                        Order #
+                                    </h2>
+
+                                    <span
+                                        class="status-badge"
+                                        id="orderStatusBadge"
+                                    >
+                                        Pending
+                                    </span>
+
+                                </div>
+
+                                <p
+                                    class="order-created"
+                                    id="orderCreatedAt"
+                                >
+                                    —
+                                </p>
+
+                            </div>
+
+                            <div class="order-header-actions">
+
+                                <button
+                                    type="button"
+                                    class="secondary-button"
+                                    id="printOrderButton"
+                                >
+                                    <span>⎙</span>
+                                    <span>Print Order</span>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Status Management -->
+                    <section class="content-card status-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    ORDER STATUS
+                                </span>
+
+                                <h3>Update Order Status</h3>
+                            </div>
+
+                            <span
+                                class="current-status-label"
+                                id="currentStatusLabel"
+                            >
+                                Pending
+                            </span>
+
+                        </div>
+
+                        <div class="status-update-row">
+
+                            <div class="status-select-wrapper">
+
+                                <label for="statusSelect">
+                                    Status
+                                </label>
+
+                                <select id="statusSelect">
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="processing">
+                                        Processing
+                                    </option>
+
+                                    <option value="shipped">
+                                        Shipped
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="cancelled">
+                                        Cancelled
+                                    </option>
+                                </select>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="primary-button update-status-button"
+                                id="updateStatusButton"
+                            >
+                                Update Status
+                            </button>
+
+                        </div>
+
+                        <p
+                            class="status-help"
+                            id="statusHelp"
+                        >
+                            Updating the status may send an email notification
+                            to the customer.
+                        </p>
+
+                    </section>
+
+                    <!-- Main Grid -->
+                    <div class="order-details-grid">
+
+                        <!-- Customer -->
+                        <section class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <span class="section-eyebrow">
+                                        CUSTOMER
+                                    </span>
+
+                                    <h3>Customer Information</h3>
+                                </div>
+
+                            </div>
+
+                            <div class="customer-information">
+
+                                <div class="customer-avatar" id="customerAvatar">
+                                    C
+                                </div>
+
+                                <div class="customer-main">
+
+                                    <h4 id="customerName">
+                                        —
+                                    </h4>
+
+                                    <a
+                                        href="#"
+                                        id="customerEmail"
+                                    >
+                                        —
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            <div class="information-list">
+
+                                <div class="information-row">
+
+                                    <span class="information-label">
+                                        Customer ID
+                                    </span>
+
+                                    <strong id="customerId">
+                                        —
+                                    </strong>
+
+                                </div>
+
+                                <div class="information-row">
+
+                                    <span class="information-label">
+                                        Phone
+                                    </span>
+
+                                    <strong id="customerPhone">
+                                        —
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- Payment -->
+                        <section class="content-card">
+
+                            <div class="card-heading">
+
+                                <div>
+                                    <span class="section-eyebrow">
+                                        PAYMENT
+                                    </span>
+
+                                    <h3>Payment Information</h3>
+                                </div>
+
+                            </div>
+
+                            <div class="information-list">
+
+                                <div class="information-row">
+
+                                    <span class="information-label">
+                                        Payment Status
+                                    </span>
+
+                                    <span
+                                        class="payment-badge"
+                                        id="paymentStatus"
+                                    >
+                                        —
+                                    </span>
+
+                                </div>
+
+                                <div class="information-row">
+
+                                    <span class="information-label">
+                                        Payment Method
+                                    </span>
+
+                                    <strong id="paymentMethod">
+                                        —
+                                    </strong>
+
+                                </div>
+
+                                <div class="information-row">
+
+                                    <span class="information-label">
+                                        Transaction Reference
+                                    </span>
+
+                                    <strong
+                                        class="reference-value"
+                                        id="paymentReference"
+                                    >
+                                        —
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                    <!-- Shipping / Address -->
+                    <section class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    DELIVERY
+                                </span>
+
+                                <h3>Delivery Information</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="delivery-grid">
+
+                            <div class="delivery-block">
+
+                                <span class="information-label">
+                                    Recipient
+                                </span>
+
+                                <strong id="shippingName">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="delivery-block">
+
+                                <span class="information-label">
+                                    Phone
+                                </span>
+
+                                <strong id="shippingPhone">
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="delivery-block delivery-address">
+
+                                <span class="information-label">
+                                    Delivery Address
+                                </span>
+
+                                <strong id="shippingAddress">
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <!-- Order Items -->
+                    <section class="content-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    ORDER
+                                </span>
+
+                                <h3>Order Items</h3>
+                            </div>
+
+                            <span
+                                class="item-count"
+                                id="itemCount"
+                            >
+                                0 items
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="order-items"
+                            id="orderItems"
+                        >
+                            <!-- Items inserted by JavaScript -->
+                        </div>
+
+                    </section>
+
+                    <!-- Order Summary -->
+                    <section class="content-card order-summary-card">
+
+                        <div class="card-heading">
+
+                            <div>
+                                <span class="section-eyebrow">
+                                    SUMMARY
+                                </span>
+
+                                <h3>Order Summary</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="summary-list">
+
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <strong id="subtotalAmount">
+                                    ₦0.00
+                                </strong>
+                            </div>
+
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <strong id="shippingAmount">
+                                    ₦0.00
+                                </strong>
+                            </div>
+
+                            <div
+                                class="summary-row"
+                                id="discountRow"
+                            >
+                                <span>Discount</span>
+                                <strong id="discountAmount">
+                                    ₦0.00
+                                </strong>
+                            </div>
+
+                            <div class="summary-divider"></div>
+
+                            <div class="summary-row total-row">
+                                <span>Total</span>
+                                <strong id="totalAmount">
+                                    ₦0.00
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Toast -->
+    <div
+        class="toast"
+        id="toast"
+        role="alert"
+        aria-live="polite"
+    >
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="../js/admin/order-details.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Skip Fashion</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin_products.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body class="admin-body">
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link active"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar" id="sidebarAvatar">A</div>
+                    <div class="admin-user-mini-info">
+                        <strong id="sidebarAdminName">Administrator</strong>
+                        <span id="sidebarAdminRole">Admin</span>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    class="admin-logout-btn"
+                    id="logoutButton"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button
+                    type="button"
+                    id="sidebarToggle"
+                    class="sidebar-toggle"
+                    aria-label="Open sidebar"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="page-heading">
+                    <span class="page-eyebrow">Skip Fashion Admin</span>
+                    <h1>Products</h1>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <a
+                    href="../index.html"
+                    class="view-store-link"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    View Store
+                </a>
+
+                <div class="topbar-user">
+                    <div class="admin-avatar" id="topbarAvatar">A</div>
+                    <div class="topbar-user-info">
+                        <strong id="topbarAdminName">Administrator</strong>
+                        <span id="topbarAdminEmail"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="admin-content">
+
+            <div class="dashboard-welcome products-page-header">
+                <div>
+                    <span class="section-eyebrow">Catalog</span>
+                    <h2>All Products</h2>
+                    <p id="productCount">Loading products...</p>
+                </div>
+
+                <a href="add-product.html" class="admin-primary-btn">
+                    <span>+</span>
+                    Add Product
+                </a>
+            </div>
+
+            <div class="products-toolbar admin-panel">
+
+                <div class="products-search">
+                    <label for="productSearch">Search products</label>
+                    <input
+                        type="search"
+                        id="productSearch"
+                        placeholder="Search by product name or slug..."
+                    >
+                </div>
+
+                <div class="products-filter">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter">
+                        <option value="all">All Products</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <div class="products-filter">
+                    <label for="featuredFilter">Featured</label>
+                    <select id="featuredFilter">
+                        <option value="all">All</option>
+                        <option value="featured">Featured</option>
+                        <option value="not-featured">Not Featured</option>
+                    </select>
+                </div>
+
+                <button type="button" id="refreshProducts" class="admin-secondary-button">
+                    Refresh
+                </button>
+
+            </div>
+
+            <div id="productsError" class="admin-alert admin-alert-error" hidden>
+                <strong>Unable to load products.</strong>
+                <span id="productsErrorMessage"></span>
+                <button type="button" id="dismissProductsError">×</button>
+            </div>
+
+            <div id="productsSuccess" class="admin-alert admin-alert-success" hidden>
+                <span id="productsSuccessMessage"></span>
+                <button type="button" id="dismissProductsSuccess">×</button>
+            </div>
+
+            <div class="admin-panel products-table-card">
+
+                <div class="table-wrapper">
+                    <table class="admin-table products-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Featured</th>
+                                <th>Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="productsTableBody">
+                            <tr>
+                                <td colspan="8" class="table-loading">
+                                    Loading products...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer class="admin-footer">
+            <p>&copy; <span id="currentYear"></span> Skip Fashion.</p>
+        </footer>
+
+    </main>
+    </div>
+
+    <script src="../js/admin/products.js"></script>
+</body>
+</html>

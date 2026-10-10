@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create your Skip Fashion account and start exploring our collection.">
+    <title>Create Account | Skip Fashion</title>
+    <link rel="stylesheet" href="../css/auth-signup.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body>
+
+    <main class="signup-page">
+        <section class="signup-visual">
+            <div class="visual-overlay"></div>
+            <div class="visual-content">
+                <a href="../index.html" class="brand">
+                    <span class="brand-name">SKIP FASHION</span>
+                    <span class="brand-subtitle">Fashion & Accessories</span>
+                </a>
+                <div class="visual-message">
+                    <span class="eyebrow">WELCOME TO SKIP FASHION</span>
+                    <h1>Tradition, crafted for you.</h1>
+                    <p>Create your account to discover our collections, place orders and keep track of your purchases.</p>
+                </div>
+                <div class="visual-bottom">
+                    <span></span>
+                    <p>Crafted with culture. Made with intention.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="signup-form-section">
+            <div class="form-wrapper">
+                <div class="mobile-brand">
+                    <a href="../index.html" class="brand">
+                        <span class="brand-name">SKIP FASHION</span>
+                        <span class="brand-subtitle">Fashion & Accessories</span>
+                    </a>
+                </div>
+
+                <div class="form-header">
+                    <span class="eyebrow">CREATE ACCOUNT</span>
+                    <h2>Join Skip Fashion</h2>
+                    <p>Create your account to continue shopping and manage your orders.</p>
+                </div>
+
+                <form id="signupForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="Enter first name"
+                                autocomplete="given-name"
+                                required
+                            >
+                            <small class="error-message" id="firstNameError"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Enter last name"
+                                autocomplete="family-name"
+                                required
+                            >
+                            <small class="error-message" id="lastNameError"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required
+                        >
+                        <small class="error-message" id="emailError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            autocomplete="tel"
+                            required
+                        >
+                        <small class="error-message" id="phoneError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" data-target="password" aria-label="Show password">
+                                Show
+                            </button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <span id="strengthIndicator"></span>
+                            </div>
+                            <span id="strengthText">Use at least 8 characters</span>
+                        </div>
+                        <small class="error-message" id="passwordError"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+                            <button type="button" class="password-toggle" data-target="confirmPassword" aria-label="Show password">
+                                Show
+                            </button>
+                        </div>
+                        <small class="error-message" id="confirmPasswordError"></small>
+                    </div>
+
+                    <div class="terms-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="custom-checkbox"></span>
+                            <span>
+                                I agree to the <a href="#" class="terms-link">Terms & Conditions</a> and <a href="#" class="terms-link">Privacy Policy</a>.
+                            </span>
+                        </label>
+                        <small class="error-message" id="termsError"></small>
+                    </div>
+
+                    <div class="form-alert" id="formAlert"></div>
+
+                    <button type="submit" class="signup-button" id="signupButton">
+                        <span class="button-text">Create Account</span>
+                        <span class="button-loader"></span>
+                    </button>
+                </form>
+
+                <div class="login-link">
+                    <p>Already have an account? <a href="login.html">Sign in</a></p>
+                </div>
+
+                <a href="../pages/shop.html" class="continue-shopping">
+                    <span>←</span> Continue Shopping
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/signup.js"></script>
+</body>
+</html>

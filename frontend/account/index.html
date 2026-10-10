@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Skip Fashion customer dashboard.">
+    <title>My Account | Skip Fashion</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body>
+
+    <div class="dashboard-shell">
+
+        <aside class="account-sidebar" id="accountSidebar">
+
+            <div class="sidebar-brand">
+                <a href="../index.html" class="dashboard-brand">
+                    <span class="dashboard-brand-mark">S</span>
+                    <span class="dashboard-brand-text">
+                        <strong>SKIP FASHION</strong>
+                        <small>Fashion & Accessories</small>
+                    </span>
+                </a>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="sidebarAvatar">
+                    R
+                </div>
+
+                <div class="sidebar-user-info">
+                    <strong id="sidebarUserName">Welcome</strong>
+                    <span id="sidebarUserEmail">Customer</span>
+                </div>
+            </div>
+
+            <nav class="account-nav">
+
+                <div class="account-nav-label">ACCOUNT</div>
+
+                <a href="index.html" class="account-nav-item active">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+                            <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+                            <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+                        </svg>
+                    </span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="orders.html" class="account-nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M6 3h12"></path>
+                            <path d="M6 3v18h12V3"></path>
+                            <path d="M9 8h6"></path>
+                            <path d="M9 12h6"></path>
+                            <path d="M9 16h4"></path>
+                        </svg>
+                    </span>
+                    <span>My Orders</span>
+                    <span class="nav-count" id="ordersNavCount">0</span>
+                </a>
+
+                <a href="profile.html" class="account-nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="8" r="4"></circle>
+                            <path d="M4 21c.8-4.1 3.4-6 8-6s7.2 1.9 8 6"></path>
+                        </svg>
+                    </span>
+                    <span>My Profile</span>
+                </a>
+
+                <div class="account-nav-label secondary-label">SHOP</div>
+
+                <a href="../pages/shop.html" class="account-nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 8h14l-1 12H6L5 8Z"></path>
+                            <path d="M9 8a3 3 0 0 1 6 0"></path>
+                        </svg>
+                    </span>
+                    <span>Continue Shopping</span>
+                </a>
+
+                <a href="../cart/cart.html" class="account-nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="9" cy="20" r="1"></circle>
+                            <circle cx="18" cy="20" r="1"></circle>
+                            <path d="M2 3h2l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L22 7H5"></path>
+                        </svg>
+                    </span>
+                    <span>My Cart</span>
+                    <span class="nav-count" id="cartNavCount">0</span>
+                </a>
+
+                <a href="../pages/contact.html" class="account-nav-item">
+                    <span class="nav-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="M9.5 9a2.5 2.5 0 1 1 4.4 1.6c-.9 1-1.9 1.4-1.9 2.9"></path>
+                            <circle cx="12" cy="17" r=".7" fill="currentColor" stroke="none"></circle>
+                        </svg>
+                    </span>
+                    <span>Help & Support</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a href="../index.html" class="back-store">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M19 12H5"></path>
+                        <path d="m12 19-7-7 7-7"></path>
+                    </svg>
+                    <span>Back to Store</span>
+                </a>
+
+                <button type="button" class="sign-out-button" id="signOutButton">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M10 17l5-5-5-5"></path>
+                        <path d="M15 12H3"></path>
+                        <path d="M21 3v18"></path>
+                    </svg>
+                    <span>Sign Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+        <main class="dashboard-main">
+
+            <div class="dashboard-topbar">
+
+                <button type="button" class="mobile-sidebar-toggle" id="mobileSidebarToggle" aria-label="Open account menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="topbar-title">
+                    <span>MY ACCOUNT</span>
+                    <h1>Dashboard</h1>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <a href="../pages/shop.html" class="shop-button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 8h14l-1 12H6L5 8Z"></path>
+                            <path d="M9 8a3 3 0 0 1 6 0"></path>
+                        </svg>
+                        <span>Shop</span>
+                    </a>
+
+                    <div class="topbar-user">
+                        <div class="topbar-avatar" id="topbarAvatar">R</div>
+                        <div>
+                            <strong id="topbarUserName">Customer</strong>
+                            <span>Account</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="dashboard-content">
+
+                <section class="dashboard-welcome">
+
+                    <div>
+                        <span class="dashboard-eyebrow">YOUR SKIP FASHION ACCOUNT</span>
+                        <h2>Hello, <span id="welcomeName">Customer</span></h2>
+                        <p>
+                            Manage your orders, account information and continue
+                            shopping from your Skip Fashion collection.
+                        </p>
+                    </div>
+
+                    <a href="../pages/shop.html" class="dashboard-shop-link">
+                        Explore the Collection
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M5 12h14"></path>
+                            <path d="m13 6 6 6-6 6"></path>
+                        </svg>
+                    </a>
+
+                </section>
+
+                <section class="stats-grid">
+
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">TOTAL ORDERS</span>
+                            <span class="stat-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M6 3h12"></path>
+                                    <path d="M6 3v18h12V3"></path>
+                                    <path d="M9 8h6"></path>
+                                    <path d="M9 12h6"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <strong class="stat-number" id="totalOrders">0</strong>
+                        <span class="stat-description">Orders placed</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">PENDING</span>
+                            <span class="stat-icon stat-icon-warning">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <path d="M12 7v5l3 2"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <strong class="stat-number" id="pendingOrders">0</strong>
+                        <span class="stat-description">Awaiting confirmation</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">COMPLETED</span>
+                            <span class="stat-icon stat-icon-success">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <path d="m8 12 2.7 2.7L16.5 9"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <strong class="stat-number" id="completedOrders">0</strong>
+                        <span class="stat-description">Successfully completed</span>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-label">CART ITEMS</span>
+                            <span class="stat-icon stat-icon-accent">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 8h14l-1 12H6L5 8Z"></path>
+                                    <path d="M9 8a3 3 0 0 1 6 0"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <strong class="stat-number" id="cartItems">0</strong>
+                        <span class="stat-description">Items in your cart</span>
+                    </article>
+
+                </section>
+
+                <section class="dashboard-main-grid">
+
+                    <article class="dashboard-card orders-card">
+
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">ORDER ACTIVITY</span>
+                                <h3>Recent Orders</h3>
+                            </div>
+
+                            <a href="orders.html" class="card-link">
+                                View All
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="card-body orders-list" id="recentOrders">
+
+                            <div class="dashboard-loading">
+                                <div class="mini-spinner"></div>
+                                <span>Loading your orders...</span>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="dashboard-card quick-card">
+
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">SHORTCUTS</span>
+                                <h3>Quick Access</h3>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+
+                            <a href="../pages/shop.html" class="quick-action">
+                                <span class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                        <path d="M5 8h14l-1 12H6L5 8Z"></path>
+                                        <path d="M9 8a3 3 0 0 1 6 0"></path>
+                                    </svg>
+                                </span>
+                                <span>
+                                    <strong>Shop Collection</strong>
+                                    <small>Browse available pieces</small>
+                                </span>
+                                <svg class="quick-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </a>
+
+                            <a href="orders.html" class="quick-action">
+                                <span class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                        <path d="M6 3h12"></path>
+                                        <path d="M6 3v18h12V3"></path>
+                                        <path d="M9 8h6"></path>
+                                    </svg>
+                                </span>
+                                <span>
+                                    <strong>Track Orders</strong>
+                                    <small>View your order history</small>
+                                </span>
+                                <svg class="quick-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </a>
+
+                            <a href="profile.html" class="quick-action">
+                                <span class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                        <circle cx="12" cy="8" r="4"></circle>
+                                        <path d="M4 21c.8-4.1 3.4-6 8-6s7.2 1.9 8 6"></path>
+                                    </svg>
+                                </span>
+                                <span>
+                                    <strong>My Profile</strong>
+                                    <small>Update account information</small>
+                                </span>
+                                <svg class="quick-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </a>
+
+                            <a href="../cart/cart.html" class="quick-action">
+                                <span class="quick-action-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                        <circle cx="9" cy="20" r="1"></circle>
+                                        <circle cx="18" cy="20" r="1"></circle>
+                                        <path d="M2 3h2l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L22 7H5"></path>
+                                    </svg>
+                                </span>
+                                <span>
+                                    <strong>My Cart</strong>
+                                    <small>Review items before checkout</small>
+                                </span>
+                                <svg class="quick-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                    <path d="M5 12h14"></path>
+                                    <path d="m13 6 6 6-6 6"></path>
+                                </svg>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <section class="dashboard-bottom-grid">
+
+                    <article class="dashboard-card account-info-card">
+
+                        <div class="card-header">
+                            <div>
+                                <span class="card-eyebrow">ACCOUNT</span>
+                                <h3>Account Information</h3>
+                            </div>
+
+                            <a href="profile.html" class="edit-link">
+                                Edit Profile
+                            </a>
+                        </div>
+
+                        <div class="info-list">
+
+                            <div class="info-item">
+                                <span class="info-label">FULL NAME</span>
+                                <strong class="info-value" id="profileName">—</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">EMAIL ADDRESS</span>
+                                <strong class="info-value" id="profileEmail">—</strong>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">PHONE NUMBER</span>
+                                <strong class="info-value" id="profilePhone">Not provided</strong>
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                    <article class="support-card">
+
+                        <div class="support-content">
+
+                            <span class="support-mark">H</span>
+
+                            <div>
+                                <span class="card-eyebrow">NEED ASSISTANCE?</span>
+                                <h3>We're here to help.</h3>
+                                <p>
+                                    Have a question about an order, product,
+                                    size or delivery? Contact us directly.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <a href="../pages/contact.html" class="support-button">
+                            Contact Us
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                                <path d="M5 12h14"></path>
+                                <path d="m13 6 6 6-6 6"></path>
+                            </svg>
+                        </a>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script src="../js/account.js"></script>
+
+</body>
+</html>

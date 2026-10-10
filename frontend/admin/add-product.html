@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product | Skip Fashion</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/admin_products.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body class="admin-body add-product-page">
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link active"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-user-mini">
+                    <div class="admin-avatar" id="sidebarAvatar">A</div>
+                    <div class="admin-user-mini-info">
+                        <strong id="sidebarAdminName">Administrator</strong>
+                        <span id="sidebarAdminRole">Admin</span>
+                    </div>
+                </div>
+                <button
+                    type="button"
+                    class="admin-logout-btn"
+                    id="logoutButton"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-overlay" id="adminOverlay"></div>
+
+        <main class="admin-main">
+            <header class="admin-topbar">
+                <div class="topbar-left">
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebarToggle"
+                        aria-label="Open menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="page-heading">
+                        <span class="page-eyebrow">Skip Fashion Admin</span>
+                        <h1>Add Product</h1>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <a
+                        href="../index.html"
+                        class="view-store-link"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Store
+                    </a>
+                    <div class="topbar-user">
+                        <div class="admin-avatar" id="topbarAvatar">A</div>
+                        <div class="topbar-user-info">
+                            <strong id="topbarAdminName">Administrator</strong>
+                            <span id="topbarAdminEmail"></span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section class="admin-content">
+                <div class="dashboard-welcome">
+                    <div>
+                        <span class="section-eyebrow">Catalog</span>
+                        <h2>New Product</h2>
+                        <p>Add a product to your catalog.</p>
+                    </div>
+                    <a href="products.html" class="admin-secondary-button">
+                        Back to Products
+                    </a>
+                </div>
+
+                <div id="productFormError" class="admin-alert admin-alert-error" hidden>
+                    <strong>Unable to create product.</strong>
+                    <span id="productFormErrorMessage"></span>
+                    <button type="button" id="dismissProductFormError" aria-label="Dismiss">
+                        &times;
+                    </button>
+                </div>
+
+                <div id="productFormSuccess" class="admin-alert admin-alert-success" hidden>
+                    <span id="productFormSuccessMessage"></span>
+                    <button type="button" id="dismissProductFormSuccess" aria-label="Dismiss">
+                        &times;
+                    </button>
+                </div>
+
+                <form id="productForm" class="admin-form" novalidate>
+                    <div class="admin-panel admin-form-card">
+                        <div class="admin-form-card-header">
+                            <h2>Product Information</h2>
+                            <p>Enter the basic information for this product.</p>
+                        </div>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group admin-form-full">
+                                <label for="productName">Product Name <span>*</span></label>
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    name="name"
+                                    placeholder="e.g. Royal Agbada"
+                                    required
+                                >
+                                <small class="form-error" id="productNameError"></small>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="productSlug">Slug <span>*</span></label>
+                                <input
+                                    type="text"
+                                    id="productSlug"
+                                    name="slug"
+                                    placeholder="royal-agbada"
+                                    required
+                                >
+                                <small class="form-hint">Use lowercase words separated by hyphens.</small>
+                                <small class="form-error" id="productSlugError"></small>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="productCategory">Category <span>*</span></label>
+                                <select id="productCategory" name="category_id" required>
+                                    <option value="">Loading categories...</option>
+                                </select>
+                                <small class="form-error" id="productCategoryError"></small>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="productPrice">Price <span>*</span></label>
+                                <input
+                                    type="number"
+                                    id="productPrice"
+                                    name="price"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0.00"
+                                    required
+                                >
+                                <small class="form-error" id="productPriceError"></small>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="productCurrency">Currency</label>
+                                <select id="productCurrency" name="currency">
+                                    <option value="NGN">NGN — Nigerian Naira</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-form-group">
+                                <label for="productType">Product Type <span>*</span></label>
+                                <select id="productType" name="product_type" required>
+                                    <option value="">Select product type</option>
+                                    <option value="physical">Physical Product</option>
+                                    <option value="digital">Digital Product</option>
+                                </select>
+                                <small class="form-error" id="productTypeError"></small>
+                            </div>
+
+                            <div class="admin-form-group admin-form-full">
+                                <label for="productDescription">Description</label>
+                                <textarea
+                                    id="productDescription"
+                                    name="description"
+                                    rows="7"
+                                    placeholder="Describe the product..."
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-panel admin-form-card">
+                        <div class="admin-form-card-header">
+                            <h2>Product Visibility</h2>
+                            <p>Choose how the product should appear in the store.</p>
+                        </div>
+                        <div class="admin-form-options">
+                            <label class="admin-checkbox">
+                                <input type="checkbox" id="productActive" name="is_active" checked>
+                                <span>
+                                    <strong>Active product</strong>
+                                    <small>Customers can see this product in the store.</small>
+                                </span>
+                            </label>
+                            <label class="admin-checkbox">
+                                <input type="checkbox" id="productFeatured" name="is_featured">
+                                <span>
+                                    <strong>Featured product</strong>
+                                    <small>Include this product among featured products.</small>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="admin-panel admin-form-card">
+                        <div class="admin-form-card-header">
+                            <h2>Product Image</h2>
+                            <p>Add a primary image for the product gallery and store listing.</p>
+                        </div>
+
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group admin-form-full">
+                                <label for="primaryProductImage">Primary image</label>
+                                <input
+                                    type="file"
+                                    id="primaryProductImage"
+                                    accept="image/jpeg,image/png,image/webp,image/gif"
+                                >
+                                <small class="form-hint">JPG, PNG, WEBP or GIF. Maximum size: 5 MB.</small>
+                            </div>
+
+                            <div id="primaryImagePreview" class="product-image-preview admin-form-full" hidden>
+                                <img id="primaryImagePreviewImage" alt="Selected product image preview">
+                                <div>
+                                    <strong>Primary image preview</strong>
+                                    <p>The first variant below will be created for this image.</p>
+                                </div>
+                            </div>
+
+                            <div id="primaryImageVariantFields" class="admin-form-grid admin-form-full" hidden>
+                                <div class="admin-form-group">
+                                    <label for="primaryImageOptionType">Variant type <span>*</span></label>
+                                    <input type="text" id="primaryImageOptionType" value="Size" maxlength="50">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label for="primaryImageOptionValue">Variant option <span>*</span></label>
+                                    <input type="text" id="primaryImageOptionValue" value="One size" maxlength="100">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label for="primaryImageStock">Starting stock</label>
+                                    <input type="number" id="primaryImageStock" min="0" step="1" value="0">
+                                </div>
+                                <div class="admin-form-group">
+                                    <label for="primaryImageAlt">Image description</label>
+                                    <input type="text" id="primaryImageAlt" maxlength="255" placeholder="Product name and visual details">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-actions">
+                        <a href="products.html" class="admin-secondary-button">Cancel</a>
+                        <button type="submit" id="saveProductButton" class="admin-primary-btn">
+                            Create Product
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="admin-footer">
+                <p>&copy; <span id="currentYear"></span> Skip Fashion.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="../js/admin/product-form.js"></script>
+</body>
+</html>

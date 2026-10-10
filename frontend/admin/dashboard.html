@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Skip Fashion</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body class="admin-body">
+
+    <div class="admin-layout">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+
+            <div class="admin-brand">
+                <a href="dashboard.html" class="admin-brand-link">
+                    <span class="admin-brand-mark">S</span>
+
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <nav class="admin-nav"><div class="admin-nav-section"><span class="admin-nav-label">Overview</span><a href="dashboard.html" class="admin-nav-link active"><span>Dashboard</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Catalog</span><a href="products.html" class="admin-nav-link"><span>Products</span></a><a href="categories.html" class="admin-nav-link"><span>Categories</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Sales</span><a href="orders.html" class="admin-nav-link"><span>Orders</span><span class="nav-count" id="pendingOrderCount">0</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">Customers</span><a href="customers.html" class="admin-nav-link"><span>Customers</span></a></div><div class="admin-nav-section"><span class="admin-nav-label">System</span><a href="settings.html" class="admin-nav-link"><span>Settings</span></a></div></nav>
+
+            <div class="admin-sidebar-footer">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-avatar"
+                        id="sidebarAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-mini-info">
+
+                        <strong id="sidebarAdminName">
+                            Administrator
+                        </strong>
+
+                        <span id="sidebarAdminRole">
+                            Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="admin-logout-btn"
+                    id="logoutButton"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+        <div
+            class="admin-overlay"
+            id="adminOverlay"
+        ></div>
+
+        <!-- Main -->
+        <main class="admin-main">
+
+            <!-- Topbar -->
+            <header class="admin-topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebarToggle"
+                        aria-label="Open menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="page-heading">
+
+                        <span class="page-eyebrow">
+                            Skip Fashion Admin
+                        </span>
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <button
+                        type="button"
+                        class="topbar-icon-btn"
+                        id="refreshDashboard"
+                        title="Refresh dashboard"
+                        aria-label="Refresh dashboard"
+                    >
+                        ↻
+                    </button>
+
+                    <a
+                        href="../index.html"
+                        class="view-store-link"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Store
+                    </a>
+
+                    <div class="topbar-user">
+
+                        <div
+                            class="admin-avatar"
+                            id="topbarAvatar"
+                        >
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarAdminName">
+                                Administrator
+                            </strong>
+
+                            <span id="topbarAdminEmail">
+                                Admin account
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="admin-content">
+
+                <!-- Welcome -->
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            Store Overview
+                        </span>
+
+                        <h2>
+                            Welcome back,
+                            <span id="welcomeAdminName">
+                                Administrator
+                            </span>.
+                        </h2>
+
+                        <p>
+                            Here's what's happening with your store today.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="add-product.html"
+                        class="admin-primary-btn"
+                    >
+                        <span>+</span>
+                        Add Product
+                    </a>
+
+                </section>
+
+                <!-- Error -->
+                <div
+                    class="admin-alert admin-alert-error"
+                    id="dashboardError"
+                    hidden
+                >
+
+                    <span class="alert-icon">
+                        !
+                    </span>
+
+                    <span id="dashboardErrorMessage">
+                        Unable to load dashboard data.
+                    </span>
+
+                    <button
+                        type="button"
+                        id="dismissDashboardError"
+                        aria-label="Dismiss"
+                    >
+                        &times;
+                    </button>
+
+                </div>
+
+                <!-- Stats -->
+                <section class="dashboard-stats">
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                Total Orders
+                            </span>
+
+                            <div class="stat-icon stat-icon-orders">
+                                ▤
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalOrders"
+                        >
+                            —
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-description">
+                                All customer orders
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                Customers
+                            </span>
+
+                            <div class="stat-icon stat-icon-customers">
+                                ♙
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalCustomers"
+                        >
+                            —
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-description">
+                                Registered customers
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                Products
+                            </span>
+
+                            <div class="stat-icon stat-icon-products">
+                                ▣
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalProducts"
+                        >
+                            —
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-description">
+                                Active store products
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                    <article class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                Pending Orders
+                            </span>
+
+                            <div class="stat-icon stat-icon-pending">
+                                ◷
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="pendingOrders"
+                        >
+                            —
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-description">
+                                Orders awaiting action
+                            </span>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+                <!-- Main Dashboard Grid -->
+                <section class="dashboard-grid">
+
+                    <!-- Recent Orders -->
+                    <div class="admin-panel recent-orders-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-eyebrow">
+                                    Sales
+                                </span>
+
+                                <h3>
+                                    Recent Orders
+                                </h3>
+
+                            </div>
+
+                            <a
+                                href="orders.html"
+                                class="panel-link"
+                            >
+                                View all
+                            </a>
+
+                        </div>
+
+                        <div class="table-wrapper">
+
+                            <table class="admin-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Order
+                                        </th>
+
+                                        <th>
+                                            Customer
+                                        </th>
+
+                                        <th>
+                                            Total
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                        <th>
+                                            Date
+                                        </th>
+
+                                        <th>
+                                            Action
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody id="recentOrdersTable">
+
+                                    <tr>
+
+                                        <td colspan="6">
+
+                                            <div class="table-state">
+
+                                                <span class="loading-spinner"></span>
+
+                                                Loading orders...
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="admin-panel quick-actions-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-eyebrow">
+                                    Shortcuts
+                                </span>
+
+                                <h3>
+                                    Quick Actions
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+                        <div class="quick-actions">
+
+                            <a
+                                href="add-product.html"
+                                class="quick-action"
+                            >
+
+                                <span class="quick-action-icon">
+                                    +
+                                </span>
+
+                                <span>
+
+                                    <strong>
+                                        Add Product
+                                    </strong>
+
+                                    <small>
+                                        Create a new product
+                                    </small>
+
+                                </span>
+
+                                <span class="quick-action-arrow">
+                                    →
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="products.html"
+                                class="quick-action"
+                            >
+
+                                <span class="quick-action-icon">
+                                    ▣
+                                </span>
+
+                                <span>
+
+                                    <strong>
+                                        Manage Products
+                                    </strong>
+
+                                    <small>
+                                        View your catalog
+                                    </small>
+
+                                </span>
+
+                                <span class="quick-action-arrow">
+                                    →
+                                </span>
+
+                            </a>
+
+                            <a
+                                href="orders.html"
+                                class="quick-action"
+                            >
+
+                                <span class="quick-action-icon">
+                                    ▤
+                                </span>
+
+                                <span>
+
+                                    <strong>
+                                        Manage Orders
+                                    </strong>
+
+                                    <small>
+                                        Process customer orders
+                                    </small>
+
+                                </span>
+
+                                <span class="quick-action-arrow">
+                                    →
+                                </span>
+
+                            </a>
+
+                            
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Bottom Grid -->
+                <section class="dashboard-bottom-grid">
+
+                    <!-- Order Status -->
+                    <div class="admin-panel order-status-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-eyebrow">
+                                    Orders
+                                </span>
+
+                                <h3>
+                                    Order Status
+                                </h3>
+
+                            </div>
+
+                            <a
+                                href="orders.html"
+                                class="panel-link"
+                            >
+                                Manage
+                            </a>
+
+                        </div>
+
+                        <div class="order-status-list">
+
+                            <div class="order-status-item">
+
+                                <div class="status-item-info">
+
+                                    <span class="status-dot status-pending"></span>
+
+                                    <span>
+
+                                        <strong>
+                                            Pending
+                                        </strong>
+
+                                        <small>
+                                            Awaiting processing
+                                        </small>
+
+                                    </span>
+
+                                </div>
+
+                                <strong
+                                    class="status-item-number"
+                                    id="statusPending"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="order-status-item">
+
+                                <div class="status-item-info">
+
+                                    <span class="status-dot status-processing"></span>
+
+                                    <span>
+
+                                        <strong>
+                                            Processing
+                                        </strong>
+
+                                        <small>
+                                            Currently being prepared
+                                        </small>
+
+                                    </span>
+
+                                </div>
+
+                                <strong
+                                    class="status-item-number"
+                                    id="statusProcessing"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="order-status-item">
+
+                                <div class="status-item-info">
+
+                                    <span class="status-dot status-shipped"></span>
+
+                                    <span>
+
+                                        <strong>
+                                            Shipped
+                                        </strong>
+
+                                        <small>
+                                            On the way to customer
+                                        </small>
+
+                                    </span>
+
+                                </div>
+
+                                <strong
+                                    class="status-item-number"
+                                    id="statusShipped"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+                            <div class="order-status-item">
+
+                                <div class="status-item-info">
+
+                                    <span class="status-dot status-delivered"></span>
+
+                                    <span>
+
+                                        <strong>
+                                            Delivered
+                                        </strong>
+
+                                        <small>
+                                            Successfully completed
+                                        </small>
+
+                                    </span>
+
+                                </div>
+
+                                <strong
+                                    class="status-item-number"
+                                    id="statusDelivered"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Store Snapshot -->
+                    <div class="admin-panel store-snapshot-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+
+                                <span class="panel-eyebrow">
+                                    Catalog
+                                </span>
+
+                                <h3>
+                                    Store Snapshot
+                                </h3>
+
+                            </div>
+
+                            <a
+                                href="products.html"
+                                class="panel-link"
+                            >
+                                Products
+                            </a>
+
+                        </div>
+
+                        <div class="snapshot-list">
+
+                            <div class="snapshot-item">
+
+                                <div class="snapshot-item-icon">
+                                    ▣
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Active Products
+                                    </strong>
+
+                                    <small>
+                                        Available in store
+                                    </small>
+
+                                </div>
+
+                                <span
+                                    class="snapshot-value"
+                                    id="activeProducts"
+                                >
+                                    —
+                                </span>
+
+                            </div>
+
+                            <div class="snapshot-item">
+
+                                <div class="snapshot-item-icon">
+                                    ◫
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Categories
+                                    </strong>
+
+                                    <small>
+                                        Product categories
+                                    </small>
+
+                                </div>
+
+                                <span
+                                    class="snapshot-value"
+                                    id="totalCategories"
+                                >
+                                    —
+                                </span>
+
+                            </div>
+
+                            <div class="snapshot-item">
+
+                                <div class="snapshot-item-icon">
+                                    ★
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Featured Products
+                                    </strong>
+
+                                    <small>
+                                        Highlighted products
+                                    </small>
+
+                                </div>
+
+                                <span
+                                    class="snapshot-value"
+                                    id="featuredProducts"
+                                >
+                                    —
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Footer -->
+                <footer class="admin-footer">
+
+                    <span>
+
+                        ©
+                        <span id="currentYear"></span>
+
+                        Skip Fashion
+
+                    </span>
+
+                    <span>
+                        Admin Panel
+                    </span>
+
+                </footer>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin/dashboard.js"></script>
+
+</body>
+</html>

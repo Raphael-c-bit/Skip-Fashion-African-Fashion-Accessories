@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View your Skip Fashion order history.">
+    <title>My Orders | Skip Fashion</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body>
+
+    <div class="dashboard-shell">
+
+        <aside class="account-sidebar" id="accountSidebar">
+
+            <div class="sidebar-brand">
+                <a href="../index.html" class="dashboard-brand">
+                    <span class="dashboard-brand-mark">S</span>
+
+                    <span class="dashboard-brand-text">
+                        <strong>SKIP FASHION</strong>
+                        <small>Fashion & Accessories</small>
+                    </span>
+                </a>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="sidebarAvatar">H</div>
+
+                <div class="sidebar-user-info">
+                    <strong id="sidebarUserName">Welcome</strong>
+                    <span id="sidebarUserEmail">Customer</span>
+                </div>
+            </div>
+
+            <nav class="account-nav">
+
+                <div class="account-nav-label">
+                    ACCOUNT
+                </div>
+
+                <a
+                    href="index.html"
+                    class="account-nav-item"
+                >
+                    <span>Overview</span>
+                </a>
+
+                <a
+                    href="orders.html"
+                    class="account-nav-item active"
+                    aria-current="page"
+                >
+                    <span>My Orders</span>
+                    <span
+                        class="nav-count"
+                        id="ordersNavCount"
+                    >
+                        0
+                    </span>
+                </a>
+
+                <a
+                    href="profile.html"
+                    class="account-nav-item"
+                >
+                    <span>My Profile</span>
+                </a>
+
+                <div class="account-nav-label secondary-label">
+                    SHOP
+                </div>
+
+                <a
+                    href="../pages/shop.html"
+                    class="account-nav-item"
+                >
+                    <span>Continue Shopping</span>
+                </a>
+
+                <a
+                    href="../cart/cart.html"
+                    class="account-nav-item"
+                >
+                    <span>My Cart</span>
+                    <span
+                        class="nav-count"
+                        id="cartNavCount"
+                    >
+                        0
+                    </span>
+                </a>
+
+                <a
+                    href="../pages/contact.html"
+                    class="account-nav-item"
+                >
+                    <span>Help &amp; Support</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="back-store"
+                >
+                    <span>Back to Store</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sign-out-button"
+                    id="signOutButton"
+                >
+                    <span>Sign Out</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-topbar">
+
+                <button
+                    type="button"
+                    class="mobile-sidebar-toggle"
+                    id="mobileSidebarToggle"
+                    aria-label="Open account menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="topbar-title">
+                    <span>MY ACCOUNT</span>
+                    <h1>My Orders</h1>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <a
+                        href="../pages/shop.html"
+                        class="shop-button"
+                    >
+                        <span>Shop</span>
+                    </a>
+
+                    <div class="topbar-user">
+
+                        <div
+                            class="topbar-avatar"
+                            id="topbarAvatar"
+                        >
+                            H
+                        </div>
+
+                        <div>
+                            <strong id="topbarUserName">
+                                Customer
+                            </strong>
+                            <span>Account</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="dashboard-content">
+
+                <section class="dashboard-welcome">
+
+                    <div>
+                        <span class="dashboard-eyebrow">
+                            ORDER ACTIVITY
+                        </span>
+
+                        <h2>Your orders</h2>
+
+                        <p>
+                            Review order status, totals,
+                            and delivery details for your purchases.
+                        </p>
+                    </div>
+
+                    <div class="orders-page-actions">
+                        <a
+                            href="../checkout/checkout.html"
+                            class="shop-button orders-place-order"
+                        >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                                <circle cx="9" cy="20" r="1"></circle>
+                                <circle cx="18" cy="20" r="1"></circle>
+                                <path d="M2 3h2l2.7 12.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L22 7H5"></path>
+                            </svg>
+                            <span>Place a New Order</span>
+                        </a>
+                        <a href="index.html" class="dashboard-shop-link">
+                            Account Overview
+                        </a>
+                    </div>
+
+                </section>
+
+                <article class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="card-eyebrow">
+                                HISTORY
+                            </span>
+
+                            <h3>All Orders</h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="card-body orders-list"
+                        id="allOrders"
+                    >
+                        <div class="dashboard-loading">
+                            <div class="mini-spinner"></div>
+
+                            <span>
+                                Loading your orders...
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="orders-whatsapp-section"
+                        id="ordersWhatsAppSection"
+                    >
+
+                        <button
+                            type="button"
+                            class="orders-whatsapp-button"
+                            id="sendOrdersWhatsApp"
+                        >
+                            <span class="orders-whatsapp-icon">
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5Z"
+                                    ></path>
+
+                                    <path
+                                        d="M8.5 9.5c.3 1.2 1.8 3 3.2 3.8 1.4.8 2.2.9 2.8.4"
+                                    ></path>
+                                </svg>
+                            </span>
+
+                            <span>
+                                Send Pending Orders via WhatsApp
+                            </span>
+                        </button>
+
+                        <p class="orders-whatsapp-note">
+                            Send your pending and processing orders
+                            together in one WhatsApp message.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+    <script src="../js/account.js"></script>
+
+</body>
+</html>

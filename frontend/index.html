@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skip Fashion | African Fashion & Accessories</title>
+
+    <meta name="description" content="Discover authentic African attire and handmade crafts designed with culture, creativity and craftsmanship.">
+
+    <script>
+        document.documentElement.classList.add("js-enabled");
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/jpeg" href="img/skip-fashion-logo.jpg">
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span>Authentic African craftsmanship</span>
+            <span>•</span>
+            <span>Order securely through WhatsApp</span>
+            <span>•</span>
+            <span>Account required to place an order</span>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-symbol">S</span>
+                <span>
+                    <strong>SKIP FASHION</strong>
+                    <small>Fashion &amp; Accessories</small>
+                </span>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="pages/shop.html">Shop</a>
+                <a href="pages/collections.html">Collections</a>
+                <a href="pages/how-it-works.html">How It Works</a>
+                <a href="pages/contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="search-button" id="searchButton" aria-label="Search">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M16 16L21 21"></path>
+                    </svg>
+                </button>
+
+                <a href="auth/login.html" class="account-button">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path>
+                    </svg>
+                    <span>Account</span>
+                </a>
+
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="pages/shop.html">Shop</a>
+            <a href="pages/collections.html">Collections</a>
+            <a href="pages/how-it-works.html">How It Works</a>
+            <a href="pages/contact.html">Contact</a>
+            <a href="auth/login.html">My Account</a>
+        </nav>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" id="searchClose">×</button>
+
+        <div class="search-box">
+            <span>SEARCH SKIP FASHION</span>
+            <input type="text" id="searchInput" placeholder="Search attire, crafts, colours...">
+            <div></div>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="hero">
+            <div class="container hero-container">
+
+                <div class="hero-content reveal">
+
+                    <div class="hero-label">
+                        <span></span>
+                        NEW COLLECTION 2026
+                    </div>
+
+                    <h1>
+                        Skip Fashion
+                        <span>Made Modern.</span>
+                    </h1>
+
+                    <p>
+                        Discover traditional African attire and handcrafted pieces
+                        created for people who value culture, individuality and
+                        exceptional craftsmanship.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="pages/shop.html" class="primary-button">
+                            Shop Collection
+                            <span>→</span>
+                        </a>
+
+                        <a href="#how-to-order" class="secondary-button">
+                            How To Order
+                        </a>
+                    </div>
+
+                    <div class="hero-account-note">
+                        <div class="account-mini-icon">✓</div>
+                        <div>
+                            <strong>Shopping with us is simple</strong>
+                            <span>Create an account before placing your order.</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="hero-visual reveal reveal-delay">
+
+                    <div class="hero-main-image">
+                        <img src="img/AFRICA DIGITAL FASHION - Timilehin Ige.jpg" alt="African traditional attire">
+                    </div>
+
+                    <div class="hero-small-image">
+                        <img src="img/Traditional Att.jpg" alt="Handmade African craft">
+                    </div>
+
+                    <div class="hero-badge">
+                        <span>ROOTED</span>
+                        <strong>IN<br>CULTURE</strong>
+                    </div>
+
+                    <div class="hero-number">
+                        01
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="category-bar">
+            <div class="container category-bar-inner">
+
+                <a href="pages/shop.html">
+                    Traditional Attire
+                    <span>✦</span>
+                </a>
+
+                <a href="pages/shop.html">
+                    Handmade Crafts
+                    <span>✦</span>
+                </a>
+
+                <a href="pages/shop.html">
+                    New Arrivals
+                    <span>✦</span>
+                </a>
+
+                <a href="pages/shop.html?category=featured">
+                    Featured
+                    <span>✦</span>
+                </a>
+
+                <a href="pages/shop.html?category=popular">
+                    Customer Favourites
+                </a>
+
+            </div>
+        </section>
+
+        <section class="offers section">
+            <div class="container">
+
+                <div class="section-title reveal">
+                    <div>
+                        <span class="section-kicker">WHAT'S TRENDING</span>
+                        <h2>Featured <span>Pieces</span></h2>
+                    </div>
+
+                    <a href="pages/shop.html" class="view-link">
+                        View All
+                        <span>→</span>
+                    </a>
+                </div>
+
+                <div class="offer-grid">
+
+                    <article class="offer-card reveal">
+
+                        <div class="offer-image">
+                            <img src="img/Agbada design_@thesketchlagos.jpg" alt="Heritage Classic Set">
+
+                            <span class="discount">NEW</span>
+
+                            <button class="quick-action">♡</button>
+                        </div>
+
+                        <div class="offer-info">
+
+                            <div>
+                                <span class="product-type">TRADITIONAL ATTIRE</span>
+                                <h3>Heritage Classic Set</h3>
+
+                                <div class="rating">
+                                    <span>★★★★★</span>
+                                    <small>4.9</small>
+                                </div>
+                            </div>
+
+                            <div class="price">
+                                <strong>₦85,000</strong>
+                            </div>
+
+                            <a href="pages/shop.html">
+                                Shop Now →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <article class="offer-card reveal reveal-delay">
+
+                        <div class="offer-image">
+                            <img src="img/download (95).jpg" alt="Artisan Brass Pan">
+
+                            <span class="discount">POPULAR</span>
+
+                            <button class="quick-action">♡</button>
+                        </div>
+
+                        <div class="offer-info">
+
+                            <div>
+                                <span class="product-type">HANDMADE CRAFT</span>
+                                <h3>Artisan Brass Pan</h3>
+
+                                <div class="rating">
+                                    <span>★★★★★</span>
+                                    <small>5.0</small>
+                                </div>
+                            </div>
+
+                            <div class="price">
+                                <strong>₦42,000</strong>
+                            </div>
+
+                            <a href="pages/shop.html">
+                                Shop Now →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="promo-section">
+            <div class="container">
+
+                <div class="promo-banner reveal">
+
+                    <div class="promo-content">
+                        <span class="section-kicker">THE SKIP FASHION EDIT</span>
+
+                        <h2>
+                            Made by hands.
+                            <span>Rooted in culture.</span>
+                        </h2>
+
+                        <p>
+                            Discover pieces that bring African craftsmanship
+                            into contemporary everyday life.
+                        </p>
+
+                        <a href="pages/shop.html" class="light-button">
+                            Explore The Edit
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                    <div class="promo-image">
+                        <img src="img/traditional.jpg" alt="African fashion and craftsmanship">
+                    </div>
+
+                    <div class="promo-circle">
+                        <span>H</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="new-arrivals section" id="collections">
+            <div class="container">
+
+                <div class="section-title reveal">
+                    <div>
+                        <span class="section-kicker">JUST ARRIVED</span>
+                        <h2>New Arrival <span>Products</span></h2>
+                    </div>
+
+                    <p>
+                        Fresh pieces selected for your wardrobe,
+                        home and collection.
+                    </p>
+                </div>
+
+                <div class="arrival-layout">
+
+                    <a href="pages/shop.html?category=new" class="arrival-feature reveal">
+
+                        <img src="img/Native Caftan _ Outfit Available on order.jpg" alt="New African collection">
+
+                        <div class="arrival-feature-overlay"></div>
+
+                        <div class="arrival-feature-content">
+                            <span>NEW COLLECTION</span>
+                            <h3>Wear something<br>that means something.</h3>
+
+                            <div class="arrival-offer">
+                                <strong>EXPLORE</strong>
+                                <span>→</span>
+                            </div>
+                        </div>
+
+                    </a>
+
+                    <div class="arrival-products">
+
+                        <article class="small-product reveal">
+
+                            <a href="product.html?id=3" class="small-product-image">
+                                <img src="img/Royal Agbada.jpg" alt="Royal Pattern Ensemble">
+                                <span>NEW</span>
+                                <button>♡</button>
+                            </a>
+
+                            <span class="product-type">TRADITIONAL ATTIRE</span>
+
+                            <h3>Royal Pattern Ensemble</h3>
+
+                            <div class="small-product-bottom">
+                                <span>★★★★★</span>
+                            </div>
+
+                        </article>
+
+                        <article class="small-product reveal reveal-delay">
+
+                            <a href="product.html?id=4" class="small-product-image">
+                                <img src="img/Brocade Jacquard Lace Fabrics.jpg" alt="Floral Engraved Piece">
+                                <span>NEW</span>
+                                <button>♡</button>
+                            </a>
+
+                            <span class="product-type">HANDMADE CRAFT</span>
+
+                            <h3>Floral Engraved Piece</h3>
+
+                            <div class="small-product-bottom">
+                                <span>★★★★★</span>
+                            </div>
+
+                        </article>
+
+                        <article class="small-product reveal">
+
+                            <a href="product.html?id=5" class="small-product-image">
+                                <img src="img/cloth.jpg" alt="Heritage Everyday Piece">
+                                <span>NEW</span>
+                                <button>♡</button>
+                            </a>
+
+                            <span class="product-type">TRADITIONAL ATTIRE</span>
+
+                            <h3>Heritage Everyday Piece</h3>
+
+                            <div class="small-product-bottom">
+                                <span>★★★★★</span>
+                            </div>
+
+                        </article>
+
+                        <article class="small-product reveal reveal-delay">
+
+                            <a href="product.html?id=6" class="small-product-image">
+                                <img src="img/Handcrafted.jpg" alt="Handcrafted Heritage Decor">
+                                <span>NEW</span>
+                                <button>♡</button>
+                            </a>
+
+                            <span class="product-type">HANDMADE CRAFT</span>
+
+                            <h3>Handcrafted Heritage Decor</h3>
+
+                            <div class="small-product-bottom">
+                                <span>★★★★★</span>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="color-section section">
+
+            <div class="container">
+
+                <div class="color-heading reveal">
+                    <span class="section-kicker">SHOP YOUR STYLE</span>
+                    <h2>Find Your <span>Colour</span></h2>
+                    <p>
+                        Explore products through the colours that define your style.
+                    </p>
+                </div>
+
+                <div class="color-grid">
+
+                    <a href="pages/shop.html?color=purple" class="color-card purple reveal">
+                        <span>01</span>
+                        <strong>Royal<br>Purple</strong>
+                        <small>Explore →</small>
+                    </a>
+
+                    <a href="pages/shop.html?color=burgundy" class="color-card burgundy reveal reveal-delay">
+                        <span>02</span>
+                        <strong>Deep<br>Burgundy</strong>
+                        <small>Explore →</small>
+                    </a>
+
+                    <a href="pages/shop.html?color=orange" class="color-card orange reveal">
+                        <span>03</span>
+                        <strong>Warm<br>Orange</strong>
+                        <small>Explore →</small>
+                    </a>
+
+                    <a href="pages/shop.html?color=rose" class="color-card rose reveal reveal-delay">
+                        <span>04</span>
+                        <strong>Heritage<br>Rose</strong>
+                        <small>Explore →</small>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="how-section section" id="how-to-order">
+            <div class="container">
+
+                <div class="how-intro reveal">
+                    <span class="section-kicker">SHOPPING MADE SIMPLE</span>
+                    <h2>How To <span>Order</span></h2>
+                    <p>
+                        Your order journey is simple, secure and designed
+                        around a direct connection with our team.
+                    </p>
+                </div>
+
+                <div class="how-grid">
+
+                    <div class="how-step reveal">
+                        <span class="step-count">01</span>
+                        <div class="step-icon">01</div>
+
+                        <h3>Create An Account</h3>
+
+                        <p>
+                            Sign up with your details before placing an order.
+                            Your account helps us keep your order information
+                            organised.
+                        </p>
+
+                        <a href="auth/signup.html">Create Account →</a>
+                    </div>
+
+                    <div class="how-step reveal reveal-delay">
+                        <span class="step-count">02</span>
+                        <div class="step-icon">02</div>
+
+                        <h3>Choose Your Product</h3>
+
+                        <p>
+                            Browse our collection and select the attire or craft
+                            you want to purchase.
+                        </p>
+
+                        <a href="pages/shop.html">Browse Products →</a>
+                    </div>
+
+                    <div class="how-step reveal">
+                        <span class="step-count">03</span>
+                        <div class="step-icon">03</div>
+
+                        <h3>Select Your Variant</h3>
+
+                        <p>
+                            Choose the available colour, clothing size,
+                            pan size or design that suits your preference.
+                        </p>
+
+                        <a href="pages/shop.html">Explore Options →</a>
+                    </div>
+
+                    <div class="how-step reveal reveal-delay">
+                        <span class="step-count">04</span>
+                        <div class="step-icon">04</div>
+
+                        <h3>Confirm On WhatsApp</h3>
+
+                        <p>
+                            Review your order summary and send it directly
+                            to our WhatsApp channel for confirmation.
+                        </p>
+
+                        <a href="#whatsapp">Learn More →</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="why-section section">
+            <div class="container">
+
+                <div class="why-grid">
+
+                    <div class="why-content reveal">
+                        <span class="section-kicker">WHY SKIP FASHION</span>
+
+                        <h2>
+                            Culture deserves
+                            <span>good design.</span>
+                        </h2>
+
+                        <p>
+                            We bring traditional African aesthetics together
+                            with a modern shopping experience, making it easier
+                            to discover products that have meaning behind them.
+                        </p>
+
+                        <a href="#story" class="view-link">
+                            Discover Skip Fashion
+                            <span>→</span>
+                        </a>
+                    </div>
+
+                    <div class="why-features">
+
+                        <div class="why-feature reveal">
+                            <strong>01</strong>
+                            <div>
+                                <h3>Authentic</h3>
+                                <p>
+                                    Products inspired by African culture,
+                                    tradition and craftsmanship.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="why-feature reveal reveal-delay">
+                            <strong>02</strong>
+                            <div>
+                                <h3>Thoughtfully Selected</h3>
+                                <p>
+                                    Every collection is presented with
+                                    attention to detail.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="why-feature reveal">
+                            <strong>03</strong>
+                            <div>
+                                <h3>Simple Ordering</h3>
+                                <p>
+                                    Select your product and complete your
+                                    order directly through WhatsApp.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="why-feature reveal reveal-delay">
+                            <strong>04</strong>
+                            <div>
+                                <h3>Personal Account</h3>
+                                <p>
+                                    Keep your details and order history
+                                    organised in one place.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="story-section section" id="story">
+            <div class="container story-grid">
+
+                <div class="story-image reveal">
+                    <img src="img/African artisan craftsmanship.jpg" alt="African artisan craftsmanship">
+
+                    <div class="story-image-label">
+                        <span>CRAFT</span>
+                        <span>CULTURE</span>
+                        <span>IDENTITY</span>
+                    </div>
+                </div>
+
+                <div class="story-content reveal reveal-delay">
+
+                    <span class="section-kicker">OUR STORY</span>
+
+                    <h2>
+                        Keeping
+                        <span>heritage alive.</span>
+                    </h2>
+
+                    <p>
+                        African clothing and handmade crafts are more than
+                        products. They represent stories, communities,
+                        creativity and generations of knowledge.
+                    </p>
+
+                    <p>
+                        Skip Fashion exists to make these pieces easier to
+                        discover while giving them a modern digital home.
+                    </p>
+
+                    <a href="#story" class="view-link">
+                        Read Our Story
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="account-cta">
+            <div class="container account-cta-inner reveal">
+
+                <div>
+                    <span class="section-kicker">YOUR SKIP FASHION ACCOUNT</span>
+
+                    <h2>
+                        Ready to find
+                        <span>your piece?</span>
+                    </h2>
+
+                    <p>
+                        Create your account, explore our collections and
+                        start your first order.
+                    </p>
+                </div>
+
+                <a href="auth/signup.html" class="primary-button white">
+                    Create Account
+                    <span>→</span>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="whatsapp-section" id="whatsapp">
+            <div class="container whatsapp-inner reveal">
+
+                <div class="whatsapp-icon-large">
+                    WA
+                </div>
+
+                <div class="whatsapp-copy">
+                    <span class="section-kicker">NEED HELP?</span>
+
+                    <h2>Talk to our team.</h2>
+
+                    <p>
+                        Have a question about a product, size, colour or order?
+                        Send us a message directly on WhatsApp.
+                    </p>
+                </div>
+
+                <a href="https://wa.me/2340000000000" target="_blank" class="whatsapp-button">
+                    Chat On WhatsApp
+                    <span>↗</span>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container footer-main">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand">
+                    <span class="brand-symbol">S</span>
+
+                    <span>
+                        <strong>SKIP FASHION</strong>
+                        <small>Fashion &amp; Accessories</small>
+                    </span>
+                </a>
+
+                <p>
+                    Authentic African attire and handmade crafts,
+                    thoughtfully presented for the modern customer.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <div>
+                    <h4>Shop</h4>
+                    <a href="pages/shop.html">All Products</a>
+                    <a href="pages/shop.html?category=attire">Traditional Attire</a>
+                    <a href="pages/shop.html?category=crafts">Handmade Crafts</a>
+                    <a href="pages/shop.html?category=new">New Arrivals</a>
+                </div>
+
+                <div>
+                    <h4>Account</h4>
+                    <a href="auth/signup.html">Create Account</a>
+                    <a href="auth/login.html">Login</a>
+                    <a href="account/index.html">My Orders</a>
+                </div>
+
+                <div>
+                    <h4>Help</h4>
+                    <a href="#how-to-order">How To Order</a>
+                    <a href="#whatsapp">WhatsApp</a>
+                    <a href="pages/contact.html">Contact</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container footer-bottom">
+
+            <span>
+                © <span id="year"></span> Skip Fashion
+            </span>
+
+            <span>
+                Culture. Craft. Identity.
+            </span>
+
+        </div>
+
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/header.js"></script>
+
+</body>
+</html>

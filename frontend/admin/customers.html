@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Customers | Skip Fashion</title>
+<link
+        rel="stylesheet"
+        href="../css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/customers.css"
+    >
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+
+<body class="admin-body customers-page">
+
+    <div class="admin-layout">
+
+        <aside
+            class="admin-sidebar"
+            id="adminSidebar"
+        >
+
+            <div class="admin-brand">
+
+                <a
+                    href="dashboard.html"
+                    class="admin-brand-link"
+                >
+
+                    <span class="admin-brand-mark">S
+                    </span>
+
+                    <span class="admin-brand-text">
+                        <strong>Skip Fashion</strong>
+                        <small>Admin Panel</small>
+                    </span>
+
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    aria-label="Close menu"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+            <nav class="admin-nav">
+                <div class="admin-nav-section">
+                    <span class="admin-nav-label">Overview</span>
+                    <a href="dashboard.html" class="admin-nav-link">
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+
+                <div class="admin-nav-section">
+                    <span class="admin-nav-label">Catalog</span>
+                    <a href="products.html" class="admin-nav-link">
+                        <span>Products</span>
+                    </a>
+                    <a href="categories.html" class="admin-nav-link">
+                        <span>Categories</span>
+                    </a>
+                </div>
+
+                <div class="admin-nav-section">
+                    <span class="admin-nav-label">Sales</span>
+                    <a href="orders.html" class="admin-nav-link">
+                        <span>Orders</span>
+                    </a>
+                </div>
+
+                <div class="admin-nav-section">
+                    <span class="admin-nav-label">Customers</span>
+                    <a href="customers.html" class="admin-nav-link active">
+                        <span>Customers</span>
+                    </a>
+                </div>
+
+                <div class="admin-nav-section">
+                    <span class="admin-nav-label">System</span>
+                    <a href="settings.html" class="admin-nav-link">
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+
+                <div class="admin-user-mini">
+
+                    <div
+                        class="admin-avatar"
+                        id="sidebarAvatar"
+                    >
+                        A
+                    </div>
+
+                    <div class="admin-user-mini-info">
+
+                        <strong id="sidebarAdminName">
+                            Administrator
+                        </strong>
+
+                        <span id="sidebarAdminRole">
+                            Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="admin-logout-btn"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+        <div
+            class="admin-overlay"
+            id="adminOverlay"
+        ></div>
+
+        <main class="admin-main">
+
+            <header class="admin-topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="sidebar-toggle"
+                        id="sidebarToggle"
+                        aria-label="Open menu"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="page-heading">
+
+                        <span class="page-eyebrow">
+                            Skip Fashion Admin
+                        </span>
+
+                        <h1>
+                            Customers
+                        </h1>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <a
+                        href="../index.html"
+                        class="view-store-link"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Store
+                    </a>
+
+                    <div class="topbar-user">
+
+                        <div
+                            class="admin-avatar"
+                            id="topbarAvatar"
+                        >
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarAdminName">
+                                Administrator
+                            </strong>
+
+                            <span id="topbarAdminEmail"></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="admin-content">
+
+                <section class="dashboard-welcome">
+
+                    <div>
+
+                        <span class="section-eyebrow">
+                            Customer Management
+                        </span>
+
+                        <h2>
+                            Customers
+                        </h2>
+
+                        <p>
+                            View and manage customers registered on
+                            the Skip Fashion store.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <div
+                    class="admin-alert admin-alert-error"
+                    id="customersError"
+                    hidden
+                >
+
+                    <span id="customersErrorMessage"></span>
+
+                    <button
+                        type="button"
+                        id="dismissCustomersError"
+                        aria-label="Dismiss error"
+                    >
+                        &times;
+                    </button>
+
+                </div>
+
+                <section class="customer-stats">
+
+                    <div class="customer-stat-card">
+
+                        <div class="customer-stat-icon">
+                            ♙
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Customers
+                            </span>
+
+                            <strong id="totalCustomers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="customer-stat-card">
+
+                        <div class="customer-stat-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Active Customers
+                            </span>
+
+                            <strong id="activeCustomers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="customer-stat-card">
+
+                        <div class="customer-stat-icon">
+                            ◷
+                        </div>
+
+                        <div>
+
+                            <span>
+                                New This Month
+                            </span>
+
+                            <strong id="newCustomers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                    <div class="customer-stat-card">
+
+                        <div class="customer-stat-icon">
+                            ₦
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Customers With Orders
+                            </span>
+
+                            <strong id="orderingCustomers">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="admin-panel customers-panel">
+
+                    <div class="customers-toolbar">
+
+                        <div class="customers-toolbar-heading">
+
+                            <h2>
+                                Customer List
+                            </h2>
+
+                            <p id="customerResultCount">
+                                0 customers
+                            </p>
+
+                        </div>
+
+                        <div class="customers-toolbar-actions">
+
+                            <div class="customer-search">
+
+                                <span class="search-icon">
+                                    ⌕
+                                </span>
+
+                                <input
+                                    type="search"
+                                    id="customerSearch"
+                                    placeholder="Search customers..."
+                                    autocomplete="off"
+                                >
+
+                                <button
+                                    type="button"
+                                    id="clearCustomerSearch"
+                                    aria-label="Clear search"
+                                    hidden
+                                >
+                                    &times;
+                                </button>
+
+                            </div>
+
+                            <select
+                                id="customerStatusFilter"
+                                class="customer-filter"
+                            >
+                                <option value="all">
+                                    All Customers
+                                </option>
+
+                                <option value="active">
+                                    Active
+                                </option>
+
+                                <option value="inactive">
+                                    Inactive
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="customers-loading"
+                        id="customersLoading"
+                    >
+
+                        <div class="loading-spinner"></div>
+
+                        <span>
+                            Loading customers...
+                        </span>
+
+                    </div>
+
+                    <div
+                        class="customers-empty"
+                        id="customersEmpty"
+                        hidden
+                    >
+
+                        <div class="empty-icon">
+                            ♙
+                        </div>
+
+                        <h3>
+                            No customers found
+                        </h3>
+
+                        <p id="customersEmptyMessage">
+                            There are no customers matching your search.
+                        </p>
+
+                    </div>
+
+                    <div
+                        class="customers-table-wrapper"
+                        id="customersTableWrapper"
+                        hidden
+                    >
+
+                        <table class="customers-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        Email
+                                    </th>
+
+                                    <th>
+                                        Registered
+                                    </th>
+
+                                    <th>
+                                        Orders
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="customersTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div
+                        class="customers-mobile-list"
+                        id="customersMobileList"
+                        hidden
+                    ></div>
+
+                </section>
+
+            </div>
+
+            <footer class="admin-footer">
+
+                <p>
+                    ©
+                    <span id="currentYear"></span>
+                    Skip Fashion.
+                    All rights reserved.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../js/admin/customers.js"></script>
+
+    <script>
+        const currentYearElement =
+            document.getElementById("currentYear");
+
+        if (currentYearElement) {
+            currentYearElement.textContent =
+                new Date().getFullYear();
+        }
+    </script>
+
+</body>
+</html>

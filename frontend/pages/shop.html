@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop authentic traditional attire and handmade crafts from Skip Fashion.">
+    <title>Shop | Skip Fashion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    <link rel="icon" type="image/jpeg" href="../img/skip-fashion-logo.jpg">
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span>Authentic African craftsmanship</span>
+            <span>•</span>
+            <span>Order securely through WhatsApp</span>
+            <span>•</span>
+            <span>Account required to place an order</span>
+        </div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="container header-inner">
+
+            <a href="../index.html" class="brand">
+                <span class="brand-symbol">S</span>
+                <span>
+                    <strong>SKIP FASHION</strong>
+                    <small>Fashion & Accessories</small>
+                </span>
+            </a>
+
+            <nav class="desktop-nav">
+                <a href="../index.html">Home</a>
+                <a href="shop.html" class="active">Shop</a>
+                <a href="collections.html">Collections</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <button class="search-button" id="searchButton" aria-label="Search">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M16 16L21 21"></path>
+                    </svg>
+                </button>
+
+                <a href="../account/index.html" class="account-button">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4"></circle>
+                        <path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path>
+                    </svg>
+                    <span>Account</span>
+                </a>
+
+                <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+            </div>
+
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="collections.html">Collections</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="contact.html">Contact</a>
+            <a href="../account/index.html">My Account</a>
+        </nav>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" id="searchClose">×</button>
+
+        <div class="search-box">
+            <span>SEARCH SKIP FASHION</span>
+            <input type="text" id="searchInput" placeholder="Search attire, crafts, colours...">
+            <div></div>
+        </div>
+    </div>
+
+    <main>
+
+        <section class="shop-hero">
+            <div class="shop-hero-inner">
+                <div class="hero-copy reveal">
+                    <span class="eyebrow">THE SKIP FASHION COLLECTION</span>
+                    <h1>Wear your<br><span>heritage.</span></h1>
+                    <p>
+                        Discover traditional attire and handmade pieces created
+                        for people who value culture, craftsmanship and individuality.
+                    </p>
+                </div>
+
+                <div class="hero-side reveal">
+                    <span>01</span>
+                    <p>Explore the collection</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-strip">
+            <div class="category-container">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="attire">Traditional Attire</button>
+                <button class="category-btn" data-category="crafts">Handmade Crafts</button>
+            </div>
+        </section>
+
+        <section class="shop-section">
+
+            <div class="shop-heading reveal">
+                <div>
+                    <span class="eyebrow dark">OUR COLLECTION</span>
+                    <h2>Find something<br>that feels like you.</h2>
+                </div>
+
+                <p>
+                    Browse our available pieces, select your preferred colour
+                    and size, then place your order directly through WhatsApp.
+                </p>
+            </div>
+
+            <div class="shop-controls">
+
+                <div class="results">
+                    <span id="resultCount">0 Products</span>
+                </div>
+
+                <div class="controls-right">
+
+                    <button class="filter-toggle" id="filterToggle">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 7H20"></path>
+                            <path d="M7 12H17"></path>
+                            <path d="M10 17H14"></path>
+                        </svg>
+                        Filters
+                    </button>
+
+                    <div class="sort-box">
+                        <label for="sortProducts">Sort:</label>
+                        <select id="sortProducts">
+                            <option value="latest">Latest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Name</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="shop-content">
+
+                <aside class="filters" id="filters">
+
+                    <div class="filter-top">
+                        <div>
+                            <span class="filter-label">FILTER</span>
+                            <h3>Refine Products</h3>
+                        </div>
+                        <button id="closeFilters">&times;</button>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Category</h4>
+
+                        <label>
+                            <input type="checkbox" value="attire" data-filter="category">
+                            <span>Traditional Attire</span>
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value="crafts" data-filter="category">
+                            <span>Handmade Crafts</span>
+                        </label>
+                    </div>
+
+                    <div class="filter-section">
+                        <h4>Colours</h4>
+                        <div class="colour-options" id="colourOptions"></div>
+                    </div>
+
+                    <div class="filter-section attire-filter">
+                        <h4>Sizes</h4>
+
+                        <div class="size-options">
+                            <button data-size="S">S</button>
+                            <button data-size="M">M</button>
+                            <button data-size="L">L</button>
+                            <button data-size="XL">XL</button>
+                            <button data-size="XXL">XXL</button>
+                            <button data-size="3XL">3XL</button>
+                            <button data-size="Custom Fit">Custom</button>
+                        </div>
+                    </div>
+
+                    <button class="clear-btn" id="clearFilters">
+                        Clear all filters
+                    </button>
+
+                </aside>
+
+                <div class="filter-overlay" id="filterOverlay"></div>
+
+                <div class="products-container">
+
+                    <div class="products-grid" id="productsGrid"></div>
+
+                    <div class="empty-state" id="emptyState">
+                        <div class="empty-icon">H</div>
+                        <span>NO PRODUCTS FOUND</span>
+                        <h3>Nothing matches your search.</h3>
+                        <p>Try changing your filters or searching for another product.</p>
+                        <button id="resetEmpty">View all products</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="account-section reveal">
+
+            <div class="account-number">02</div>
+
+            <div class="account-content">
+                <span class="eyebrow">READY TO ORDER?</span>
+                <h2>Create your Skip Fashion account.</h2>
+                <p>
+                    You need an account before placing an order. Your account
+                    helps us keep your customer information and order history
+                    organized for a smoother shopping experience.
+                </p>
+
+                <div class="account-actions">
+                    <a href="../auth/signup.html" class="primary-btn">Create Account</a>
+                    <a href="../auth/login.html" class="text-btn">I already have an account</a>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="order-section reveal">
+
+            <div class="order-heading">
+                <span class="eyebrow dark">HOW IT WORKS</span>
+                <h2>Simple shopping.<br>Direct ordering.</h2>
+            </div>
+
+            <div class="order-steps">
+
+                <div class="order-step">
+                    <span>01</span>
+                    <h3>Choose your piece</h3>
+                    <p>Browse the collection and open the product you want.</p>
+                </div>
+
+                <div class="order-step">
+                    <span>02</span>
+                    <h3>Select your variant</h3>
+                    <p>Choose the available colour, size or design option.</p>
+                </div>
+
+                <div class="order-step">
+                    <span>03</span>
+                    <h3>Confirm your order</h3>
+                    <p>Sign in to your account and review your selected options.</p>
+                </div>
+
+                <div class="order-step">
+                    <span>04</span>
+                    <h3>Continue on WhatsApp</h3>
+                    <p>Your order information is prepared and sent to us on WhatsApp.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">H</span>
+                    <span class="logo-content">
+                        <strong>SKIP FASHION</strong>
+                        <small>Fashion & Accessories</small>
+                    </span>
+                </a>
+
+                <p>
+                    Preserving culture through clothing, craftsmanship
+                    and meaningful handmade pieces.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <a href="shop.html">All Products</a>
+                <a href="shop.html">Traditional Attire</a>
+                <a href="shop.html">Handmade Crafts</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Account</h4>
+                <a href="../auth/login.html">Login</a>
+                <a href="../auth/signup.html">Create Account</a>
+                <a href="../account/orders.html">My Orders</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <a href="https://wa.me/2340000000000" target="_blank">WhatsApp</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Skip Fashion.</p>
+            <p>Made with culture.</p>
+        </div>
+
+    </footer>
+
+    <div class="product-modal" id="productModal">
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="product-modal-box">
+
+            <button class="modal-close" id="modalClose">&times;</button>
+
+            <div class="product-gallery">
+
+                <div class="main-product-image">
+                    <img src="" alt="" id="mainProductImage">
+                </div>
+
+                <div class="thumbnail-list" id="thumbnailList"></div>
+
+            </div>
+
+            <div class="product-details">
+
+                <span class="product-category" id="modalCategory"></span>
+
+                <h2 id="modalTitle"></h2>
+
+                <div class="modal-price" id="modalPrice"></div>
+
+                <p class="modal-description" id="modalDescription"></p>
+
+                <div class="variant-group">
+                    <div class="variant-heading">
+                        <span>Colour</span>
+                        <strong id="selectedColour">Select colour</strong>
+                    </div>
+                    <div class="modal-colours" id="modalColours"></div>
+                </div>
+
+                <div class="variant-group" id="modalSizeGroup">
+                    <div class="variant-heading">
+                        <span>Size</span>
+                        <strong id="selectedSize">Select size</strong>
+                    </div>
+                    <div class="modal-sizes" id="modalSizes"></div>
+                </div>
+
+                <div class="variant-group" id="modalDesignGroup">
+                    <div class="variant-heading">
+                        <span>Design</span>
+                        <strong id="selectedDesign">Select design</strong>
+                    </div>
+                    <div class="modal-designs" id="modalDesigns"></div>
+                </div>
+
+                <div class="order-warning" id="orderWarning">
+                    Please select all required options before ordering.
+                </div>
+
+                <button class="whatsapp-order" id="whatsappOrder">
+                    Order via WhatsApp
+                    <span>↗</span>
+                </button>
+
+                <p class="account-note">
+                    You must be signed in to place an order.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/shop.js"></script>
+    <script src="../js/header.js"></script>
+</body>
+</html>
