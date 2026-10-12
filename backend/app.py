@@ -1,3 +1,4 @@
+
 import os
 
 from flask import Flask, jsonify, send_from_directory
@@ -30,10 +31,11 @@ def create_app():
         "http://localhost:5501",
     ]
 
+    # Support API routes with and without the /api prefix.
     CORS(
         app,
         resources={
-            r"/api/*": {
+            r"/*": {
                 "origins": allowed_origins,
                 "methods": [
                     "GET",
@@ -83,7 +85,6 @@ def create_app():
         "uploads",
         "products",
     )
-
     os.makedirs(upload_folder, exist_ok=True)
 
     @app.get("/")
