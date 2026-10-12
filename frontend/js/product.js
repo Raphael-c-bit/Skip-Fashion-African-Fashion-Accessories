@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://skip-fashion-backend.onrender.com/api";
 const OWNER_WHATSAPP = "2349164836936";
 
 const STORAGE_KEYS = {
