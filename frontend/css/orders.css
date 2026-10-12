@@ -77,15 +77,19 @@ button {
 }
 
 .brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     display: grid;
     place-items: center;
-    background: var(--orange);
-    color: var(--navy);
+    background: transparent;
+    color: transparent;
     font-family: Georgia, serif;
-    font-size: 22px;
+    font-size: 0;
     font-weight: 700;
+    background-image: url("../img/skip-fashion-logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .sidebar-brand h1 {

@@ -116,16 +116,20 @@ img {
 }
 
 .brand-symbol {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 46px;
     display: grid;
     place-items: center;
     border-radius: 8px;
-    background: var(--deep-purple);
-    color: var(--orange);
+    background: transparent;
+    color: transparent;
     font-family: var(--heading);
-    font-size: 22px;
+    font-size: 0;
     font-weight: 800;
+    background-image: url("../img/skip-fashion-logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .brand > span:last-child {

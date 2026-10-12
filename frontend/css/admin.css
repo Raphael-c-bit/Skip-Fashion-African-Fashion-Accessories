@@ -102,19 +102,23 @@ textarea {
 }
 
 .admin-brand-mark {
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
 
     display: grid;
     place-items: center;
 
-    background: var(--admin-orange);
-    color: var(--admin-primary);
+    background: transparent;
+    color: transparent;
 
     border-radius: 8px;
 
-    font-size: 20px;
+    font-size: 0;
     font-weight: 800;
+    background-image: url("../img/skip-fashion-logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .admin-brand-text {

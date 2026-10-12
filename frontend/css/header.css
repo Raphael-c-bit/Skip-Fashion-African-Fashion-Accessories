@@ -28,13 +28,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--deep-purple);
-    color: var(--orange);
+    width: 46px;
+    height: 46px;
+    background: transparent;
+    color: transparent;
     font-family: "Outfit", sans-serif;
-    font-size: 20px;
+    font-size: 0;
     font-weight: 800;
+    background-image: url("../img/skip-fashion-logo.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .brand-text {
