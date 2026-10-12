@@ -1,5 +1,5 @@
-const CHECKOUT_CART_URL = "http://127.0.0.1:5000/api/cart";
-const CHECKOUT_ORDERS_URL = "http://127.0.0.1:5000/api/orders";
+const CHECKOUT_CART_URL = "https://skip-fashion-backend.onrender.com/api/cart";
+const CHECKOUT_ORDERS_URL = "https://skip-fashion-backend.onrender.com/api/orders";
 
 const OWNER_WHATSAPP = "2349164836936";
 
