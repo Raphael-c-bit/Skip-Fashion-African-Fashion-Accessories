@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://skip-fashion-backend.onrender.com/api";
+const API_BASE_URL = "http://127.0.0.1:5000/api";
 const OWNER_WHATSAPP = "2349164836936";
 
 const STORAGE_KEYS = {
@@ -1229,17 +1229,32 @@ function redirectToLogin() {
         "../auth/login.html";
 }
 
-function isAuthenticated() {
+function redirectToSignup() {
+    saveReturnUrl();
+
+    window.location.href =
+        "../auth/signup.html";
+}
+
+function requireCustomerAccount() {
     const user =
         getLoggedInUser();
 
     const token =
         getAccessToken();
 
-    return Boolean(
-        user &&
-        token
-    );
+    if (!user) {
+        redirectToSignup();
+        return false;
+    }
+
+    if (!token) {
+        clearAuthentication();
+        redirectToLogin();
+        return false;
+    }
+
+    return true;
 }
 
 /*
@@ -1303,8 +1318,7 @@ async function refreshAccessToken() {
 ================================ */
 
 async function handleAddToCart() {
-    if (!isAuthenticated()) {
-        redirectToLogin();
+    if (!requireCustomerAccount()) {
         return;
     }
 
@@ -1419,8 +1433,7 @@ async function addProductToCart() {
 ================================ */
 
 function handleWhatsAppOrder() {
-    if (!isAuthenticated()) {
-        redirectToLogin();
+    if (!requireCustomerAccount()) {
         return;
     }
 

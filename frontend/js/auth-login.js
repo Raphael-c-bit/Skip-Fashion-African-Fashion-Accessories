@@ -15,7 +15,7 @@ const modalClose = document.getElementById("modalClose");
 const forgotForm = document.getElementById("forgotForm");
 const resetEmail = document.getElementById("resetEmail");
 const modalMessage = document.getElementById("modalMessage");
-const API_BASE_URL = "https://skip-fashion-backend.onrender.com";
+const API_BASE_URL = "http://127.0.0.1:5000/api";
 let passwordResetRequested = false;
 
 currentYear.textContent = new Date().getFullYear();

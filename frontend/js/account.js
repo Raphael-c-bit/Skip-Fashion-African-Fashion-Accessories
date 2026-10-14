@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://skip-fashion-backend.onrender.com";
+const API_BASE_URL = "http://127.0.0.1:5000/api";
 
 const WHATSAPP_NUMBER = "2349164836936";
 

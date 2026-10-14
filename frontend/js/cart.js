@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://skip-fashion-backend.onrender.com/api";
+const API_BASE_URL = "http://127.0.0.1:5000/api";
 
 const state = {
     cart: null,
@@ -43,7 +43,7 @@ async function init() {
     const user = getLoggedInUser();
 
     if (!user) {
-        redirectToLogin();
+        redirectToSignup();
         return;
     }
 
@@ -825,9 +825,12 @@ function handleCheckout(event) {
     if (!user || !token) {
         event.preventDefault();
 
-        clearAuthentication();
-
-        redirectToLogin();
+        if (!user) {
+            redirectToSignup();
+        } else {
+            clearAuthentication();
+            redirectToLogin();
+        }
     }
 }
 
@@ -982,6 +985,20 @@ function redirectToLogin() {
 
     window.location.href =
         "../auth/login.html";
+}
+
+function redirectToSignup() {
+    const returnUrl =
+        window.location.pathname +
+        window.location.search;
+
+    sessionStorage.setItem(
+        "heritageRedirect",
+        returnUrl
+    );
+
+    window.location.href =
+        "../auth/signup.html";
 }
 
 function updateAccountLinks() {

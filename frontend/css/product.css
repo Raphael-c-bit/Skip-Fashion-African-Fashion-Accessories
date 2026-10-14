@@ -137,6 +137,10 @@
     min-height: 600px;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 .product-loading {
     min-height: 500px;
     display: flex;
@@ -678,7 +682,7 @@
 }
 
 .product-order-section {
-    padding: 0 0 90px;
+    padding: 32px 0 90px;
     background: #fff;
 }
 
